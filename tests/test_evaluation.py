@@ -13,10 +13,14 @@ def test_evaluation_honors_example_limit_and_representation_layer(monkeypatch):
     captured = {}
 
     def fake_loss(model, tokenizer, rows, device, max_length):
+        captured.setdefault("loss_prompts", []).append([row["text"] for row in rows])
         return float(len(rows))
 
     def fake_vectors(model, tokenizer, selected, device, max_length, hidden_layer):
         captured["selected"] = selected
+        captured["vector_prompts"] = {
+            name: [row["text"] for row in rows] for name, rows in selected.items()
+        }
         captured["hidden_layer"] = hidden_layer
         return {
             "forget": torch.tensor([[1.0, 0.0], [0.9, 0.1]]),
@@ -33,6 +37,7 @@ def test_evaluation_honors_example_limit_and_representation_layer(monkeypatch):
         "cpu",
         fixed_layer=-2,
         max_examples_per_split=2,
+        prompt_template="Question: {text}",
     )
 
     assert captured["hidden_layer"] == -2
@@ -42,3 +47,7 @@ def test_evaluation_honors_example_limit_and_representation_layer(monkeypatch):
         "control": 2,
     }
     assert metrics["forget_mean_token_loss"] == 2.0
+    assert captured["loss_prompts"][0] == [
+        "Question: f1",
+        "Question: f2",
+    ]
