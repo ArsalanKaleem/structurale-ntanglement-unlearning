@@ -1,11 +1,17 @@
-import argparse, json
+import argparse
 from pathlib import Path
 from se_unlearning.utils.config import load_config
 from se_unlearning.utils.seeds import set_seed
-from se_unlearning.utils.logging import setup_logger, write_run_metadata
+from se_unlearning.utils.logging import setup_logger
 from se_unlearning.data.load_dataset import load_jsonl, select_splits
 from se_unlearning.models.load_model import load_model_and_tokenizer
-from se_unlearning.evaluation.evaluate_checkpoint import evaluate
+from se_unlearning.models.checkpoints import (
+    save_base_checkpoint,
+    validate_base_checkpoint,
+    validate_model_revision,
+)
+from se_unlearning.evaluation.experiment_runner import run_condition
+from se_unlearning.utils.provenance import build_run_info
 
 def main():
     p = argparse.ArgumentParser()
@@ -14,31 +20,54 @@ def main():
     cfg = load_config(args.config)
     set_seed(int(cfg["experiment"]["seed"]))
     out = Path(cfg["experiment"]["output_dir"])
-    logger = setup_logger(out)
-    write_run_metadata(out, cfg)
     rows = load_jsonl(cfg["data"]["input_jsonl"])
     limits = {
         "forget": cfg["data"].get("max_forget_examples"),
+        "forget_update": cfg["data"].get("max_forget_update_examples"),
         "retain": cfg["data"].get("max_retain_examples"),
         "control": cfg["data"].get("max_control_examples"),
+        "control_update": cfg["data"].get("max_control_update_examples"),
+        "retain_update": cfg["data"].get("max_retain_update_examples"),
     }
     splits = select_splits(rows, limits)
-    model, tokenizer, device = load_model_and_tokenizer(
-        cfg["model"]["name_or_path"], cfg["model"].get("revision", "main"),
-        cfg["model"].get("device", "auto")
-    )
+    model_name = cfg["model"]["name_or_path"]
+    revision = cfg["model"].get("revision", "main")
+    validate_model_revision(model_name, revision)
+    base_dir = out / "base_model"
+    if base_dir.exists():
+        validate_base_checkpoint(base_dir, model_name, revision)
+        model, tokenizer, device = load_model_and_tokenizer(
+            str(base_dir), device=cfg["model"].get("device", "auto")
+        )
+    else:
+        model, tokenizer, device = load_model_and_tokenizer(
+            model_name, revision, cfg["model"].get("device", "auto")
+        )
+        save_base_checkpoint(model, tokenizer, base_dir, model_name, revision)
+    manifest = validate_base_checkpoint(base_dir, model_name, revision)
+    run_dir = out / "condition_no_update_original"
+    logger = setup_logger(run_dir)
     logger.info("Loaded %s on %s", cfg["model"]["name_or_path"], device)
-    metrics = evaluate(
+    run_condition(
         model,
         tokenizer,
-        splits,
         device,
-        int(cfg["model"].get("max_length", 256)),
-        int(cfg["evaluation"].get("fixed_layer", -1)),
-        int(cfg["evaluation"].get("max_eval_examples_per_split", 64)),
+        splits,
+        [],
+        cfg,
+        run_dir,
+        "no_update",
+        "original",
+        build_run_info(
+            cfg,
+            splits,
+            device,
+            manifest["resolved_revision"],
+            manifest["checkpoint_sha256"],
+        ),
+        logger=logger,
     )
-    (out / "baseline_metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
-    logger.info("Baseline metrics: %s", metrics)
+    logger.info("No-update baseline saved under %s", run_dir)
 
 if __name__ == "__main__":
     main()
