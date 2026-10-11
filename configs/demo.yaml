@@ -1,0 +1,26 @@
+experiment:
+  name: demo_smoke_test
+  seed: 17
+  output_dir: results/runs/demo_smoke_test
+model:
+  name_or_path: sshleifer/tiny-gpt2
+  revision: main
+  device: auto
+  max_length: 128
+data:
+  input_jsonl: data/demo.jsonl
+  max_forget_examples: 3
+  max_retain_examples: 2
+  max_control_examples: 2
+unlearning:
+  method: ga
+  learning_rate: 0.00001
+  max_steps_per_request: 1
+  batch_size: 1
+  sequence_length: 3
+  gradient_accumulation_steps: 1
+evaluation:
+  primary_structure_metric: cosine_separation
+  fixed_layer: -1
+  max_eval_examples_per_split: 8
+  generation_max_new_tokens: 12

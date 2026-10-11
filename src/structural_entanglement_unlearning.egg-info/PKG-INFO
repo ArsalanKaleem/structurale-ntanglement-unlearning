@@ -1,0 +1,89 @@
+Metadata-Version: 2.4
+Name: structural-entanglement-unlearning
+Version: 0.1.0
+Summary: Pilot code for sequential machine unlearning and representation geometry
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch>=2.1
+Requires-Dist: transformers<5,>=4.44
+Requires-Dist: datasets>=2.20
+Requires-Dist: accelerate>=0.33
+Requires-Dist: numpy>=1.24
+Requires-Dist: pandas>=2.0
+Requires-Dist: scikit-learn>=1.3
+Requires-Dist: matplotlib>=3.7
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: tqdm>=4.66
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: ruff>=0.6; extra == "dev"
+Dynamic: license-file
+
+# Structural Entanglement in Continual Machine Unlearning Streams
+
+A compute-conscious research pilot for testing whether sequential unlearning updates produce non-monotonic changes in representation geometry, compared with one-shot and matched controls.
+
+> **Research caution:** this repository is an experimental scaffold, not evidence that "structural entanglement inversion" is novel or real. Freeze the operational definition before inspecting the main results. Report negative and inconclusive results honestly.
+
+## Scope
+
+- Hugging Face causal language models
+- A small, explicit JSONL dataset format (included synthetic demo)
+- Gradient-ascent unlearning baseline
+- Sequential forget requests with checkpoint/evaluation after each request
+- Forget/retain/control metrics and a representation cosine-separation metric
+- Repeatable configs, seeds, logs, tests, and plots
+
+The starter implementation intentionally does **not** claim to reproduce every paper's GA/NPO/RMU method. GA is implemented as a simple baseline. NPO/RMU require method-specific objective choices and should be added only after verifying the source paper and implementation details.
+
+## Quick start (CPU smoke test)
+
+Python 3.10 or 3.11 is recommended.
+
+```bash
+python -m venv .venv
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+# macOS/Linux:
+source .venv/bin/activate
+
+pip install -e ".[dev]"
+python scripts/01_prepare_data.py --input data/demo.jsonl --output data/processed
+python scripts/02_run_baseline.py --config configs/demo.yaml
+python scripts/03_run_sequential.py --config configs/demo.yaml
+python scripts/04_evaluate.py --config configs/demo.yaml
+python scripts/05_make_figures.py --input results/tables/sequential_metrics.csv --output results/figures/sequential_metrics.png
+pytest
+```
+
+The first run downloads the configured model unless it is already cached. Start with `sshleifer/tiny-gpt2` for a software smoke test. It is **not** suitable for scientific conclusions. For a real pilot, choose a small model that fits your available GPU and verify model license, dataset terms, and method implementation.
+
+## Dataset format
+
+Each JSONL row is an object:
+
+```json
+{"id":"forget_001","text":"A fictional profile says the sample code is ALPHA.","split":"forget","request_id":"request_1"}
+{"id":"retain_001","text":"A fictional profile says the sample code is BETA.","split":"retain","request_id":"retain"}
+{"id":"control_001","text":"A fictional profile says the sample code is GAMMA.","split":"control","request_id":"control"}
+```
+
+Allowed `split` values: `forget`, `retain`, `control`. Use fictional or otherwise permitted data. Do not put personal or confidential data in the repository.
+
+## Run workflow
+
+1. Prepare and validate JSONL.
+2. Evaluate the unmodified model and cache baseline results.
+3. Run one-shot GA or sequential GA updates.
+4. Evaluate each checkpoint on fixed prompts.
+5. Compare structural-score changes with matched controls.
+6. Inspect `results/tables/*.csv`, `results/figures/*.png`, and `results/runs/*/run.json`.
+
+## Important limitations
+
+- The included synthetic demo tests code flow, not real unlearning quality.
+- A lower answer loss / changed answer is not by itself proof of deletion.
+- The cosine-separation metric is a simple representation-geometry proxy, not a literal knowledge graph or a validated universal entanglement measure.
+- One seed and a tiny model are exploratory only.
+- Sequential and control runs must be matched for update count and compute before making causal claims.
