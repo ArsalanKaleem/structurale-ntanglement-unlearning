@@ -119,6 +119,36 @@ model/revision, and settings, but distinct `experiment.seed` and `experiment.out
 then point `06_analyze.py --input` at their common parent directory. The analysis
 requires exactly one matching no-update, control, and retain run per forget run.
 
+## Kaggle notebook workflow
+
+The gated, section-by-section workflow is in
+[`notebooks/kaggle_pilot.ipynb`](notebooks/kaggle_pilot.ipynb); its exact package pins
+are in [`requirements-kaggle.lock`](requirements-kaggle.lock). Before importing the
+notebook into Kaggle, publish a commit containing both files, then replace
+`REPOSITORY_COMMIT` near the top of the notebook with that commit's full 40-character
+SHA and publish the pin update. This two-commit sequence avoids a self-referential
+commit SHA: the selected pinned commit must already contain both files. The notebook
+intentionally will not clone an older commit that lacks its lock.
+
+In Kaggle, create a GPU notebook, upload/import the notebook, attach the permitted
+JSONL dataset as an input, and run sections 1–5 in order. Fill in the model commit SHA,
+dataset path/version/source/license, and the two human-reviewed rights confirmations
+in section 3. The license metadata/access request is only a check; it does not grant
+permission or replace reviewing the terms. Section 4 runs tests and validates the
+dataset. Section 5 downloads/loads the selected model for a tiny baseline plus one
+request each of forget, control, and retain updates. It writes observed wall time,
+CUDA peak allocation, and a clearly labeled linear projection derived from those
+measurements. The notebook does not estimate a Kaggle quota or runtime allowance.
+
+Do not set `START_MAIN_EXPERIMENT = True` in section 6 until the smoke run and
+permissions have been reviewed. Save a Kaggle Notebook Version after smoke and after
+each condition. For a new session, attach the prior saved output and set
+`RECOVERY_ARTIFACTS` in the optional recovery cell to the attached
+`/kaggle/input/<attached-version>/pilot-artifacts` directory before continuing.
+Artifacts, configuration, logs, metrics, and checkpoints are stored under
+`/kaggle/working/pilot-artifacts`; recovery requires the prior Kaggle output version
+to have been saved and attached.
+
 ## Run workflow
 
 1. Freeze the protocol and validate/version the dataset.
