@@ -17,6 +17,12 @@ def test_cosine_separation_requires_two_forget_vectors():
     with pytest.raises(ValueError):
         cosine_separation(torch.tensor([[1., 0.]]), torch.tensor([[0., 1.]]))
 
+def test_cosine_separation_matches_hand_calculation():
+    forget = torch.tensor([[1.0, 0.0], [0.0, 1.0]])
+    control = torch.tensor([[1.0, 0.0]])
+
+    assert cosine_separation(forget, control) == pytest.approx(-0.5)
+
 def test_representation_uses_configured_hidden_layer():
     class Tokenizer:
         def __call__(self, texts, **kwargs):
