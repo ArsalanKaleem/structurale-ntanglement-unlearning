@@ -1,7 +1,15 @@
 import json
 from pathlib import Path
 
-VALID_SPLITS = {"forget", "retain", "control"}
+SPLIT_ORDER = (
+    "forget",
+    "retain",
+    "control",
+    "forget_update",
+    "control_update",
+    "retain_update",
+)
+VALID_SPLITS = set(SPLIT_ORDER)
 
 def load_jsonl(path: str | Path) -> list[dict]:
     rows = []
@@ -35,7 +43,7 @@ def load_jsonl(path: str | Path) -> list[dict]:
 def select_splits(rows: list[dict], limits: dict | None = None) -> dict[str, list[dict]]:
     limits = limits or {}
     result = {}
-    for split in VALID_SPLITS:
+    for split in SPLIT_ORDER:
         subset = [r for r in rows if r["split"] == split]
         limit = limits.get(split)
         if limit is not None:
@@ -50,4 +58,15 @@ def select_splits(rows: list[dict], limits: dict | None = None) -> dict[str, lis
         raise ValueError("At least one row with split='retain' is required.")
     if not result["control"]:
         raise ValueError("At least one row with split='control' is required.")
+    seen_text = {}
+    for name in SPLIT_ORDER:
+        for row in result[name]:
+            normalized = row["text"].strip().casefold()
+            previous = seen_text.get(normalized)
+            if previous is not None:
+                raise ValueError(
+                    f"Exact normalized text overlap between {previous!r} and "
+                    f"{row['id']!r} (split={name!r})"
+                )
+            seen_text[normalized] = row["id"]
     return result

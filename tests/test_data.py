@@ -41,3 +41,36 @@ def test_non_object_jsonl_row_fails(tmp_path):
 
     with pytest.raises(TypeError, match="JSON object"):
         load_jsonl(p)
+
+def test_split_selection_is_deterministic_and_preserves_file_order():
+    rows = [
+        {"id": "f2", "text": "f2", "split": "forget"},
+        {"id": "f1", "text": "f1", "split": "forget"},
+        {"id": "r1", "text": "r1", "split": "retain"},
+        {"id": "c1", "text": "c1", "split": "control"},
+    ]
+
+    first = select_splits(rows, {"forget": 1})
+    second = select_splits(rows, {"forget": 1})
+
+    assert first == second
+    assert list(first) == [
+        "forget",
+        "retain",
+        "control",
+        "forget_update",
+        "control_update",
+        "retain_update",
+    ]
+    assert [row["id"] for row in first["forget"]] == ["f2"]
+
+def test_duplicate_normalized_text_across_splits_is_rejected():
+    rows = [
+        {"id": "f", "text": "Same content", "split": "forget"},
+        {"id": "r", "text": "retain", "split": "retain"},
+        {"id": "c", "text": "control", "split": "control"},
+        {"id": "u", "text": " same CONTENT ", "split": "control_update"},
+    ]
+
+    with pytest.raises(ValueError, match="Exact normalized text overlap"):
+        select_splits(rows)
