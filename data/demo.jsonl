@@ -1,7 +1,13 @@
 {"id": "forget_001", "text": "A fictional researcher profile has sample code ALPHA-731.", "split": "forget", "request_id": "request_1"}
 {"id": "forget_002", "text": "A fictional researcher profile has sample code BRAVO-284.", "split": "forget", "request_id": "request_2"}
 {"id": "forget_003", "text": "A fictional researcher profile has sample code CHARLIE-619.", "split": "forget", "request_id": "request_3"}
+{"id": "forget_update_001", "text": "A separate fictional profile has sample code MIKE-337.", "split": "forget_update", "request_id": "request_1"}
+{"id": "forget_update_002", "text": "A separate fictional profile has sample code NOVEMBER-681.", "split": "forget_update", "request_id": "request_2"}
 {"id": "retain_001", "text": "A fictional researcher profile has sample code DELTA-502.", "split": "retain", "request_id": "retain"}
 {"id": "retain_002", "text": "A fictional researcher profile has sample code ECHO-846.", "split": "retain", "request_id": "retain"}
 {"id": "control_001", "text": "A fictional researcher profile has sample code FOXTROT-193.", "split": "control", "request_id": "control"}
 {"id": "control_002", "text": "A fictional researcher profile has sample code HOTEL-457.", "split": "control", "request_id": "control"}
+{"id": "control_update_001", "text": "An unrelated fictional note records code INDIA-318.", "split": "control_update", "request_id": "control_update_1"}
+{"id": "control_update_002", "text": "An unrelated fictional note records code JULIET-926.", "split": "control_update", "request_id": "control_update_2"}
+{"id": "retain_update_001", "text": "A separate fictional retained profile records code KILO-754.", "split": "retain_update", "request_id": "retain_update_1"}
+{"id": "retain_update_002", "text": "A separate fictional retained profile records code LIMA-205.", "split": "retain_update", "request_id": "retain_update_2"}
