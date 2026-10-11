@@ -3,7 +3,7 @@ message: "If you use this software, cite the repository and the associated resea
 title: "Structural Entanglement in Continual Machine Unlearning Streams"
 type: software
 authors:
-  - family-names: Abbasi
+  - family-names: Kaleem
     given-names: Arslan
 version: 0.1.0
 date-released: 2026-10-11
