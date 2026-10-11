@@ -18,4 +18,6 @@ def mean_token_loss(model, tokenizer, rows: list[dict], device: str, max_length:
         labels = ids[:, 1:].contiguous()
         loss = F.cross_entropy(logits.view(-1, logits.size(-1)), labels.view(-1))
         losses.append(float(loss.item()))
-    return float(sum(losses) / len(losses)) if losses else float("nan")
+    if not losses:
+        raise ValueError("No examples with at least two tokens are available for loss evaluation")
+    return float(sum(losses) / len(losses))
