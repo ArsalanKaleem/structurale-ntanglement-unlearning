@@ -1,6 +1,6 @@
 # Structural Entanglement in Continual Machine Unlearning Streams
 
-A compute-conscious research pilot for testing whether sequential unlearning updates produce non-monotonic changes in representation geometry, compared with one-shot and matched controls.
+A compute-conscious research scaffold for testing whether sequential unlearning updates produce non-monotonic changes in representation geometry, compared with no-update and matched-update controls.
 
 > **Research caution:** this repository is an experimental scaffold, not evidence that "structural entanglement inversion" is novel or real. Freeze the operational definition before inspecting the main results. Report negative and inconclusive results honestly.
 
@@ -10,10 +10,17 @@ A compute-conscious research pilot for testing whether sequential unlearning upd
 - A small, explicit JSONL dataset format (included synthetic demo)
 - Gradient-ascent unlearning baseline
 - Sequential forget requests with checkpoint/evaluation after each request
+- No-update, control-update, and retain-update conditions from one saved base checkpoint
 - Forget/retain/control metrics and a representation cosine-separation metric
-- Repeatable configs, seeds, logs, tests, and plots
+- Restartable runs, provenance, machine-readable metrics, tests, and statistical summaries
 
 The starter implementation intentionally does **not** claim to reproduce every paper's GA/NPO/RMU method. GA is implemented as a simple baseline. NPO/RMU require method-specific objective choices and should be added only after verifying the source paper and implementation details.
+
+Before any main run, complete [the pilot checklist](docs/pilot_checklist.md) and
+[the protocol](docs/protocol.md). The pilot configuration intentionally contains
+placeholders: set a full 40-character model commit SHA, a fixed dataset version, and
+the valid dataset path. The runner records the dataset's SHA-256 and the model's
+resolved revision.
 
 ## Safe Windows checks (no model download or training)
 
@@ -36,19 +43,30 @@ the baseline loads the configured model, and the sequential runner additionally 
 it. The bundled `demo` config points to `sshleifer/tiny-gpt2`; this still requires a
 model download if it is not cached and is not suitable for scientific conclusions.
 
-On Windows, after a successful sequential run, print its recorded evaluation metrics
-and plot them with:
+`02_run_baseline.py` writes the shared `base_model` checkpoint and evaluates the
+**no-update** condition. Each invocation of `03_run_sequential.py` runs a condition
+and order from that exact saved checkpoint, writes one metric row per completed
+request to both CSV and JSON, and can be rerun to resume from the latest complete
+request checkpoint. The control and retain requests are greedily paired to the
+selected forget requests by nearest tokenized prompt length, without replacement;
+the same examples remain paired to each forget request across original/shuffled
+orders. Their lengths are recorded, but this does not guarantee exact FLOP equality.
+
+The fixed primary metric is `cosine_separation`; loss columns are exploratory. The
+analysis command reports paired difference-in-change estimates against no-update,
+control GA, and retain GA, standardized effect sizes, and seed-bootstrap intervals.
+One seed cannot support a meaningful uncertainty interval or an inversion claim.
 
 ```powershell
-python scripts\04_evaluate.py --config configs\demo.yaml
-python scripts\05_make_figures.py --input results\runs\demo_smoke_test\sequential_original\sequential_metrics.csv --output results\figures\sequential_metrics.png
+.\.venv\Scripts\python.exe scripts\04_evaluate.py --config configs\pilot.yaml
+.\.venv\Scripts\python.exe scripts\05_make_figures.py --input results\runs\sequential_pilot\condition_forget_original\metrics.csv --output results\figures\forget_original.png
+.\.venv\Scripts\python.exe scripts\06_analyze.py --input results\runs\sequential_pilot --output results\analysis
 ```
 
-For a GPU experiment, use Kaggle rather than this local CPU-only check. First provide
-the permitted dataset, update `configs\pilot.yaml` with the exact model revision,
-dataset path, and frozen protocol settings, and verify the model license and dataset
-terms. Run scripts `02` and `03` in the Kaggle notebook/session using the corresponding
-Kaggle paths; do not copy the Windows commands' local paths unchanged.
+Those post-run commands operate on existing results and do not load a model. Do not
+run scripts `02` or `03` on a PC when model downloads or training are not wanted.
+Use Kaggle for experiments, and substitute the Kaggle dataset/output paths in the
+config before running.
 
 ## Dataset format
 
@@ -56,21 +74,58 @@ Each JSONL row is an object:
 
 ```json
 {"id":"forget_001","text":"A fictional profile says the sample code is ALPHA.","split":"forget","request_id":"request_1"}
+{"id":"forget_update_001","text":"A separate fictional update profile says code FOXTROT.","split":"forget_update","request_id":"request_1"}
 {"id":"retain_001","text":"A fictional profile says the sample code is BETA.","split":"retain","request_id":"retain"}
 {"id":"control_001","text":"A fictional profile says the sample code is GAMMA.","split":"control","request_id":"control"}
+{"id":"control_update_001","text":"An unrelated fictional text says code DELTA.","split":"control_update"}
+{"id":"retain_update_001","text":"A separate fictional retained text says code EPSILON.","split":"retain_update"}
 ```
 
-Allowed `split` values: `forget`, `retain`, `control`. Use fictional or otherwise permitted data. Do not put personal or confidential data in the repository.
+Allowed `split` values: `forget`, `retain`, `control`, `forget_update`,
+`control_update`, and `retain_update`. `forget`/`retain`/`control` are held-out
+evaluation examples. All three `_update` splits supply training requests and cannot
+exactly overlap normalized evaluation text or each other. Use fictional or otherwise
+permitted data. Do not put personal or confidential data in the repository.
+
+## Kaggle pilot commands
+
+After filling the model revision, dataset version/path, and frozen protocol in
+`configs/pilot.yaml`, run from the repository root in Kaggle. This runs all conditions
+for one configured seed; repeat with distinct seed/output-directory configs for
+independent replicates.
+
+```bash
+python scripts/01_prepare_data.py --input data/your_dataset.jsonl --output data/processed
+python scripts/02_run_baseline.py --config configs/pilot.yaml
+python scripts/03_run_sequential.py --config configs/pilot.yaml --condition forget --order original
+python scripts/03_run_sequential.py --config configs/pilot.yaml --condition forget --order shuffled
+python scripts/03_run_sequential.py --config configs/pilot.yaml --condition control --order original
+python scripts/03_run_sequential.py --config configs/pilot.yaml --condition control --order shuffled
+python scripts/03_run_sequential.py --config configs/pilot.yaml --condition retain --order original
+python scripts/03_run_sequential.py --config configs/pilot.yaml --condition retain --order shuffled
+python scripts/04_evaluate.py --config configs/pilot.yaml
+python scripts/06_analyze.py --input results/runs/sequential_pilot --output results/analysis
+python scripts/05_make_figures.py --input results/runs/sequential_pilot/condition_forget_original/metrics.csv --output results/figures/forget_original.png
+```
+
+To resume after a Kaggle interruption, rerun the interrupted `03` command with the
+same config. Completed request checkpoints and paired metrics are retained; the runner
+rejects changed configs, data, evaluation prompts, or base checkpoints in an existing
+run directory. Each update request is reseeded from `experiment.seed + step`.
+
+For independent replicates, create one config per seed with the same dataset,
+model/revision, and settings, but distinct `experiment.seed` and `experiment.output_dir`
+(for example `results/runs/pilot_seed_17`). Run the full command block for each config,
+then point `06_analyze.py --input` at their common parent directory. The analysis
+requires exactly one matching no-update, control, and retain run per forget run.
 
 ## Run workflow
 
-1. Prepare and validate JSONL.
-2. Evaluate the unmodified model and cache baseline results.
-3. Run one-shot GA or sequential GA updates.
-4. Evaluate each checkpoint on the same fixed split rows and raw text strings.
-5. Compare structural-score changes with matched controls.
-6. Inspect `results/runs/*/sequential_*/sequential_metrics.csv` and
-   `results/runs/*/run.json`.
+1. Freeze the protocol and validate/version the dataset.
+2. Save and evaluate the shared base checkpoint (`no_update`).
+3. Run forget, control, and retain update streams in original and shuffled orders.
+4. Inspect each condition's `metrics.csv`, `metrics.json`, and `run.json`.
+5. Analyze paired effects across independent seeds; review matching-token counts.
 
 ## Important limitations
 
@@ -78,10 +133,10 @@ Allowed `split` values: `forget`, `retain`, `control`. Use fictional or otherwis
 - A lower answer loss / changed answer is not by itself proof of deletion.
 - The cosine-separation metric is a simple representation-geometry proxy, not a literal knowledge graph or a validated universal entanglement measure.
 - One seed and a tiny model are exploratory only.
-- Evaluation uses each row's raw `text` as a causal-LM sequence; the scaffold has no separate question/answer prompt template or generation-based deletion test.
+- Evaluation and unlearning apply the same configured text template to each JSONL `text`; there is no generation-based deletion test or separate question/answer schema.
 - `generation_max_new_tokens` is currently unused because no generation-based evaluation is implemented. Gradient accumulation is not implemented; values other than `1` now fail explicitly.
-- `primary_structure_metric` documents the intended metric, but only `cosine_separation` is implemented.
-- Checkpoints save model and tokenizer files, but not optimizer state; resuming the unlearning optimizer is not implemented.
-- `control` rows are used as the structural comparison group and are not used for unlearning updates. The scaffold does not yet implement a matched control-update arm, so this alone cannot separate a structural effect from general model degradation.
-- Add compute-matched retain-only/irrelevant-data updates, an unmodified-model baseline, utility and task-performance checks, multiple seeds/orders, and uncertainty estimates before making causal claims.
-- Sequential and control runs must be matched for update count and compute before making causal claims.
+- `cosine_separation` is the sole primary metric; per-split token losses are exploratory.
+- The baseline/no-update and all update conditions share a saved initial checkpoint. Checkpoints are request-boundary model/tokenizer states; the per-request optimizer is recreated for each request.
+- All update rows (`forget_update`, `control_update`, `retain_update`) are separate from held-out evaluation rows; exact case-insensitive, whitespace-trimmed text duplication anywhere across loaded splits is rejected.
+- Control requests match request and optimizer-step counts and greedily minimize token-length differences. Exact compute matching is not guaranteed.
+- Utility/task-performance and generation-based checks, semantic leakage/contamination audits, a prespecified inversion threshold/rule, and adequate independent seeds remain necessary before making causal claims.
