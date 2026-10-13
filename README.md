@@ -95,7 +95,7 @@ for one configured seed; repeat with distinct seed/output-directory configs for
 independent replicates.
 
 ```bash
-python scripts/01_prepare_data.py --input data/your_dataset.jsonl --output data/processed
+python scripts/01_prepare_data.py --input data/fictional_authors_v1.jsonl --output data/processed
 python scripts/02_run_baseline.py --config configs/pilot.yaml
 python scripts/03_run_sequential.py --config configs/pilot.yaml --condition forget --order original
 python scripts/03_run_sequential.py --config configs/pilot.yaml --condition forget --order shuffled

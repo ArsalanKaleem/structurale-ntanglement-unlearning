@@ -37,7 +37,7 @@ lengths are recorded.
 - [x] Test no-update and matched-control update counts, including resume behavior.
 - [x] Test metric calculations against hand-computable vectors and test the analysis
   effect-size/interval calculations on known synthetic runs.
-- [ ] Pin an exact model revision and dataset version/hash before the main pilot.
+- [x] Pin an exact model revision and dataset version/hash before the main pilot.
 - [x] Record failed/incomplete run status and error details; validate all comparisons use
   identical evaluation data and settings.
 

@@ -9,8 +9,8 @@ model:
   device: auto
   max_length: 256
 data:
-  input_jsonl: data/your_dataset.jsonl
-  version: REPLACE_WITH_FIXED_DATASET_VERSION
+  input_jsonl: data/fictional_authors_v1.jsonl
+  version: fictional-authors-v1-sha256-5644e12fbc7e
   max_forget_examples: 64
   max_forget_update_examples: 64
   max_retain_examples: 64
