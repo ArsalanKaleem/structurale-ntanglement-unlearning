@@ -15,16 +15,48 @@ from se_unlearning.utils.logging import write_run_metadata
 from se_unlearning.utils.seeds import set_seed
 
 
-def latest_checkpoint_step(run_dir: str | Path) -> int:
-    run_dir = Path(run_dir)
+CHECKPOINT_RETENTION_MODES = ("all", "resume_only")
+
+
+def checkpoint_retention(config: dict) -> str:
+    mode = config.get("experiment", {}).get("checkpoint_retention", "all")
+    if mode not in CHECKPOINT_RETENTION_MODES:
+        raise ValueError(
+            f"experiment.checkpoint_retention must be one of {CHECKPOINT_RETENTION_MODES}; "
+            f"got {mode!r}"
+        )
+    return mode
+
+
+def _checkpoint_steps(run_dir: Path) -> list[int]:
     steps = []
     for path in run_dir.glob("checkpoint_step_*"):
         suffix = path.name.removeprefix("checkpoint_step_")
         if suffix.isdigit() and path.is_dir():
             steps.append(int(suffix))
-    if steps and sorted(steps) != list(range(1, max(steps) + 1)):
+    return sorted(steps)
+
+
+def latest_checkpoint_step(run_dir: str | Path, pruned: bool = False) -> int:
+    """Return the latest saved update step.
+
+    With ``pruned=True`` (``resume_only`` retention) earlier checkpoints may have been
+    deleted, so only the surviving checkpoints must be contiguous.
+    """
+    run_dir = Path(run_dir)
+    steps = _checkpoint_steps(run_dir)
+    first = steps[0] if pruned and steps else 1
+    if steps and steps != list(range(first, max(steps) + 1)):
         raise ValueError(f"Checkpoint sequence has gaps under {run_dir}")
     return max(steps, default=0)
+
+
+def prune_checkpoints(run_dir: str | Path, keep_step: int | None) -> None:
+    """Delete step checkpoints other than ``keep_step`` (all of them when None)."""
+    run_dir = Path(run_dir)
+    for step in _checkpoint_steps(run_dir):
+        if keep_step is None or step < keep_step:
+            shutil.rmtree(run_dir / f"checkpoint_step_{step}")
 
 
 def run_condition(
@@ -48,6 +80,7 @@ def run_condition(
         raise ValueError("An unlearner is required when update rows are provided")
     run_dir = Path(run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
+    retention = checkpoint_retention(config)
     metrics_path = run_dir / "metrics.csv"
     metadata_path = run_dir / "run.json"
     fingerprint = stable_fingerprint(
@@ -69,6 +102,15 @@ def run_condition(
                 f"Run configuration differs from existing artifacts in {run_dir}; "
                 "use a new output directory."
             )
+        old_steps = [int(row["step"]) for row in load_metric_rows(run_dir / "metrics.json")]
+        if (
+            old_metadata.get("status") == "complete"
+            and old_metadata.get("update_count") == len(update_rows)
+            and old_steps == list(range(len(update_rows) + 1))
+        ):
+            if retention == "resume_only":
+                prune_checkpoints(run_dir, keep_step=None)
+            return load_metric_rows(run_dir / "metrics.json")
     else:
         write_run_metadata(
             run_dir,
@@ -84,7 +126,7 @@ def run_condition(
             },
         )
 
-    completed = latest_checkpoint_step(run_dir)
+    completed = latest_checkpoint_step(run_dir, pruned=retention == "resume_only")
     if completed > len(update_rows):
         raise ValueError("Saved checkpoint count exceeds the configured update sequence")
     if completed:
@@ -169,6 +211,8 @@ def run_condition(
             }
         )
         write_metric_rows(metrics_path, rows)
+        if retention == "resume_only":
+            prune_checkpoints(run_dir, keep_step=completed)
 
     try:
         for step in range(completed + 1, len(update_rows) + 1):
@@ -215,6 +259,8 @@ def run_condition(
                 if item["update_result"]
             )
             write_json_atomic(metadata_path, metadata)
+            if retention == "resume_only":
+                prune_checkpoints(run_dir, keep_step=step)
             if logger:
                 logger.info("Condition %s step %d metrics: %s", condition, step, metrics)
     except Exception as exc:
@@ -233,4 +279,6 @@ def run_condition(
     )
     metadata["status"] = "complete"
     write_json_atomic(metadata_path, metadata)
+    if retention == "resume_only":
+        prune_checkpoints(run_dir, keep_step=None)
     return rows

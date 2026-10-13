@@ -43,7 +43,7 @@ lengths are recorded.
 
 ## P2 — scientific limitations to resolve or explicitly retain
 
-- [ ] Define and freeze the inversion rule, analysis horizon, exclusions, seed count,
+- [x] Define and freeze the inversion rule, analysis horizon, exclusions, seed count,
   and uncertainty procedure in the protocol before looking at main results.
 - [x] Include separate never-taught control-update and retain-update streams; they
   address different comparison questions and are analyzed separately.

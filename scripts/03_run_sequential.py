@@ -14,6 +14,7 @@ from se_unlearning.evaluation.controls import (
     select_update_rows,
 )
 from se_unlearning.evaluation.experiment_runner import (
+    checkpoint_retention,
     latest_checkpoint_step,
     run_condition,
 )
@@ -52,7 +53,9 @@ def main():
         cfg["model"].get("revision", "main"),
     )
     run_dir = out / f"condition_{args.condition}_{args.order}"
-    resume_step = latest_checkpoint_step(run_dir)
+    resume_step = latest_checkpoint_step(
+        run_dir, pruned=checkpoint_retention(cfg) == "resume_only"
+    )
     checkpoint_source = (
         run_dir / f"checkpoint_step_{resume_step}" if resume_step else base_dir
     )

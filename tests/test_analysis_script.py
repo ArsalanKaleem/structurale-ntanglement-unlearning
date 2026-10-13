@@ -105,3 +105,31 @@ def test_analysis_rejects_mismatched_forget_token_sequence(tmp_path):
 
     with pytest.raises(ValueError, match="Forget reference token lengths"):
         load_analyze()(root, tmp_path / "analysis", bootstrap_samples=10)
+
+
+def test_secondary_metric_analysis_writes_separate_files(tmp_path):
+    root = tmp_path / "runs"
+    for seed in (3, 9):
+        write_condition(root, "no_update", seed, None)
+        write_condition(root, "forget", seed, 0.4)
+        write_condition(root, "control", seed, 0.3)
+        write_condition(root, "retain", seed, 0.3)
+    for metrics_path in root.rglob("metrics.json"):
+        rows = json.loads(metrics_path.read_text(encoding="utf-8"))
+        for row in rows:
+            row["cosine_separation_forget_retain"] = row["cosine_separation"] * 2
+        metrics_path.write_text(json.dumps(rows), encoding="utf-8")
+
+    summaries = load_analyze()(
+        root, tmp_path / "analysis", bootstrap_samples=50,
+        metric="cosine_separation_forget_retain",
+    )
+
+    control_effect = next(s for s in summaries if s["control_condition"] == "control")
+    assert control_effect["mean_paired_effect"] == pytest.approx(0.2)
+    report = json.loads(
+        (tmp_path / "analysis" / "analysis_cosine_separation_forget_retain.json").read_text()
+    )
+    assert report["metric"] == "cosine_separation_forget_retain"
+    assert report["primary_metric"] == "cosine_separation"
+    assert not (tmp_path / "analysis" / "analysis.json").exists()

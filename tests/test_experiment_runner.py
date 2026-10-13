@@ -197,3 +197,95 @@ def test_runner_records_update_failure_and_reraises(tmp_path):
     metadata = json.loads((run_dir / "run.json").read_text(encoding="utf-8"))
     assert metadata["status"] == "failed"
     assert metadata["error_type"] == "RuntimeError"
+
+
+def resume_only_config():
+    config = runner_config()
+    config["experiment"]["checkpoint_retention"] = "resume_only"
+    return config
+
+
+def checkpoint_names(run_dir):
+    return sorted(path.name for path in run_dir.glob("checkpoint_step_*"))
+
+
+def test_resume_only_keeps_latest_checkpoint_and_removes_it_on_completion(tmp_path):
+    class RecordingUnlearner(TinyUnlearner):
+        def __init__(self, run_dir):
+            super().__init__()
+            self.run_dir = run_dir
+            self.seen = []
+
+        def update(self, model, tokenizer, rows, device, config, logger):
+            self.seen.append(checkpoint_names(self.run_dir))
+            return super().update(model, tokenizer, rows, device, config, logger)
+
+    run_dir = tmp_path / "condition_forget_original"
+    unlearner = RecordingUnlearner(run_dir)
+    updates = [{"id": f"f{i}", "text": f"f{i}"} for i in range(1, 4)]
+    args = (
+        "cpu", {"forget": [], "control": [], "retain": []}, updates,
+        resume_only_config(), run_dir, "forget", "original", runner_info(),
+    )
+    rows = run_condition(
+        TinyModel(), TinyTokenizer(), *args,
+        unlearner=unlearner, resume_loader=load_tiny_checkpoint, evaluator=fake_evaluate,
+    )
+
+    assert [row["cosine_separation"] for row in rows] == [0.0, 1.0, 2.0, 3.0]
+    assert unlearner.seen == [[], ["checkpoint_step_1"], ["checkpoint_step_2"]]
+    assert checkpoint_names(run_dir) == []
+    assert json.loads((run_dir / "run.json").read_text())["status"] == "complete"
+
+    rerun = run_condition(
+        TinyModel(), TinyTokenizer(), *args,
+        unlearner=unlearner, resume_loader=load_tiny_checkpoint, evaluator=fake_evaluate,
+    )
+    assert [row["step"] for row in rerun] == [0, 1, 2, 3]
+    assert unlearner.calls == 3
+
+
+def test_resume_only_resumes_from_latest_after_failure(tmp_path):
+    class FailOnceAtStepThree(TinyUnlearner):
+        def update(self, model, tokenizer, rows, device, config, logger):
+            if rows[0]["id"] == "f3" and not getattr(self, "failed", False):
+                self.failed = True
+                raise RuntimeError("interrupted")
+            return super().update(model, tokenizer, rows, device, config, logger)
+
+    import pytest
+
+    run_dir = tmp_path / "condition_forget_original"
+    unlearner = FailOnceAtStepThree()
+    updates = [{"id": f"f{i}", "text": f"f{i}"} for i in range(1, 4)]
+    args = (
+        "cpu", {"forget": [], "control": [], "retain": []}, updates,
+        resume_only_config(), run_dir, "forget", "original", runner_info(),
+    )
+    with pytest.raises(RuntimeError, match="interrupted"):
+        run_condition(
+            TinyModel(), TinyTokenizer(), *args,
+            unlearner=unlearner, resume_loader=load_tiny_checkpoint, evaluator=fake_evaluate,
+        )
+    assert checkpoint_names(run_dir) == ["checkpoint_step_2"]
+
+    rows = run_condition(
+        TinyModel(), TinyTokenizer(), *args,
+        unlearner=unlearner, resume_loader=load_tiny_checkpoint, evaluator=fake_evaluate,
+    )
+    assert [row["cosine_separation"] for row in rows] == [0.0, 1.0, 2.0, 3.0]
+    assert unlearner.calls == 3
+    assert checkpoint_names(run_dir) == []
+
+
+def test_unknown_checkpoint_retention_is_rejected(tmp_path):
+    import pytest
+
+    config = runner_config()
+    config["experiment"]["checkpoint_retention"] = "some"
+    with pytest.raises(ValueError, match="checkpoint_retention"):
+        run_condition(
+            TinyModel(), TinyTokenizer(), "cpu", {"forget": [], "control": [], "retain": []},
+            [], config, tmp_path / "run", "no_update", "original", runner_info(),
+            evaluator=fake_evaluate,
+        )

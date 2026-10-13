@@ -24,6 +24,7 @@ def test_evaluation_honors_example_limit_and_representation_layer(monkeypatch):
         captured["hidden_layer"] = hidden_layer
         return {
             "forget": torch.tensor([[1.0, 0.0], [0.9, 0.1]]),
+            "retain": torch.tensor([[1.0, 0.0]]),
             "control": torch.tensor([[0.0, 1.0]]),
         }
 
@@ -47,6 +48,7 @@ def test_evaluation_honors_example_limit_and_representation_layer(monkeypatch):
         "control": 2,
     }
     assert metrics["forget_mean_token_loss"] == 2.0
+    assert metrics["cosine_separation_forget_retain"] < metrics["cosine_separation"]
     assert captured["loss_prompts"][0] == [
         "Question: f1",
         "Question: f2",

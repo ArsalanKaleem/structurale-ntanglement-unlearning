@@ -35,6 +35,10 @@ def evaluate(
         hidden_layer=fixed_layer,
     )
     losses["cosine_separation"] = cosine_separation(vectors["forget"], vectors["control"])
+    # Secondary (exploratory): same-domain entanglement between forget and retain rows.
+    losses["cosine_separation_forget_retain"] = cosine_separation(
+        vectors["forget"], vectors["retain"]
+    )
     return losses
 
 def append_metric(path: str | Path, row: dict):

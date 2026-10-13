@@ -7,6 +7,8 @@ import numpy as np
 
 from se_unlearning.metrics.statistics import paired_effect_summary
 
+PRIMARY_METRIC = "cosine_separation"
+
 
 def _load_run(path: Path) -> dict:
     metadata = json.loads(path.read_text(encoding="utf-8"))
@@ -20,9 +22,9 @@ def _load_run(path: Path) -> dict:
     return {"metadata": metadata, "metrics": by_step}
 
 
-def _same_baseline(runs: list[dict]) -> None:
+def _same_baseline(runs: list[dict], metric: str = PRIMARY_METRIC) -> None:
     baselines = [
-        run["metrics"][0]["cosine_separation"]
+        run["metrics"][0][metric]
         for run in runs
         if 0 in run["metrics"]
     ]
@@ -32,7 +34,12 @@ def _same_baseline(runs: list[dict]) -> None:
         raise ValueError("Conditions do not share the same step-0 structural baseline")
 
 
-def analyze(input_dir: Path, output_dir: Path, bootstrap_samples: int = 5000) -> list[dict]:
+def analyze(
+    input_dir: Path,
+    output_dir: Path,
+    bootstrap_samples: int = 5000,
+    metric: str = PRIMARY_METRIC,
+) -> list[dict]:
     runs = []
     for metadata_path in input_dir.rglob("condition_*_*/run.json"):
         run = _load_run(metadata_path)
@@ -83,7 +90,9 @@ def analyze(input_dir: Path, output_dir: Path, bootstrap_samples: int = 5000) ->
                     raise ValueError(f"{condition} run mismatches treatment {key}")
             paired[condition].append(reference)
 
-        _same_baseline([treatment, *paired["no_update"], *paired["control"], *paired["retain"]])
+        _same_baseline(
+            [treatment, *paired["no_update"], *paired["control"], *paired["retain"]], metric
+        )
         for control_condition in ("no_update", "control", "retain"):
             control_run = paired[control_condition][0]
             if control_condition == "no_update":
@@ -114,15 +123,15 @@ def analyze(input_dir: Path, output_dir: Path, bootstrap_samples: int = 5000) ->
                     )
             for step in common_steps[1:]:
                 treatment_change = (
-                    treatment["metrics"][step]["cosine_separation"]
-                    - treatment["metrics"][0]["cosine_separation"]
+                    treatment["metrics"][step][metric]
+                    - treatment["metrics"][0][metric]
                 )
                 reference_change = (
                     0.0
                     if control_condition == "no_update"
                     else (
-                        control_run["metrics"][step]["cosine_separation"]
-                        - control_run["metrics"][0]["cosine_separation"]
+                        control_run["metrics"][step][metric]
+                        - control_run["metrics"][0][metric]
                     )
                 )
                 outputs.append(
@@ -159,10 +168,12 @@ def analyze(input_dir: Path, output_dir: Path, bootstrap_samples: int = 5000) ->
         )
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "analysis.json").write_text(
+    stem = "analysis" if metric == PRIMARY_METRIC else f"analysis_{metric}"
+    (output_dir / f"{stem}.json").write_text(
         json.dumps(
             {
-                "primary_metric": "cosine_separation",
+                "primary_metric": PRIMARY_METRIC,
+                "metric": metric,
                 "estimand": (
                     "paired difference in change from step 0: forget GA minus each "
                     "no-update, control GA, or retain GA reference"
@@ -180,7 +191,7 @@ def analyze(input_dir: Path, output_dir: Path, bootstrap_samples: int = 5000) ->
         encoding="utf-8",
     )
     if summaries:
-        with open(output_dir / "analysis.csv", "w", newline="", encoding="utf-8") as target:
+        with open(output_dir / f"{stem}.csv", "w", newline="", encoding="utf-8") as target:
             writer = csv.DictWriter(target, fieldnames=list(summaries[0]))
             writer.writeheader()
             writer.writerows(summaries)
@@ -194,8 +205,15 @@ def main():
     parser.add_argument("--input", required=True, help="Root directory containing condition runs")
     parser.add_argument("--output", required=True, help="Directory for analysis.json and CSV")
     parser.add_argument("--bootstrap-samples", type=int, default=5000)
+    parser.add_argument(
+        "--metric",
+        default=PRIMARY_METRIC,
+        help="Metric column; anything other than the primary metric is exploratory",
+    )
     args = parser.parse_args()
-    results = analyze(Path(args.input), Path(args.output), args.bootstrap_samples)
+    results = analyze(
+        Path(args.input), Path(args.output), args.bootstrap_samples, args.metric
+    )
     print(json.dumps(results, indent=2))
 
 
