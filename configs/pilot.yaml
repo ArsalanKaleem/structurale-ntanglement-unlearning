@@ -5,7 +5,7 @@ experiment:
   output_dir: results/runs/sequential_pilot
 model:
   name_or_path: Qwen/Qwen2.5-0.5B-Instruct
-  revision: REPLACE_WITH_40_CHAR_COMMIT_SHA
+  revision: 7ae557604adf67be50417f59c2c2f167def9a775
   device: auto
   max_length: 256
 data:
