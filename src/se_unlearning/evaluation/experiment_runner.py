@@ -59,6 +59,14 @@ def prune_checkpoints(run_dir: str | Path, keep_step: int | None) -> None:
             shutil.rmtree(run_dir / f"checkpoint_step_{step}")
 
 
+def _store_per_example(metrics: dict, run_dir: Path, step: int) -> dict:
+    """Move per-example losses out of the metric row into per_example/step_N.json."""
+    per_example = metrics.pop("per_example", None)
+    if per_example is not None:
+        write_json_atomic(run_dir / "per_example" / f"step_{step}.json", per_example)
+    return metrics
+
+
 def run_condition(
     model,
     tokenizer,
@@ -156,6 +164,8 @@ def run_condition(
         ),
         "prompt_template": config["evaluation"].get("prompt_template", "{text}"),
     }
+    if config["evaluation"].get("extra_layers"):
+        eval_kwargs["extra_layers"] = tuple(int(x) for x in config["evaluation"]["extra_layers"])
     update_rows = render_rows(update_rows, eval_kwargs["prompt_template"])
     metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
     metadata["status"] = "in_progress"
@@ -164,7 +174,9 @@ def run_condition(
     write_json_atomic(metadata_path, metadata)
     if not rows:
         try:
-            baseline = evaluator(model, tokenizer, splits, device, **eval_kwargs)
+            baseline = _store_per_example(
+                evaluator(model, tokenizer, splits, device, **eval_kwargs), run_dir, 0
+            )
         except Exception as exc:
             metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
             metadata["status"] = "failed"
@@ -191,7 +203,9 @@ def run_condition(
             raise FileNotFoundError(f"Checkpoint update state is missing: {state_path}")
         state = json.loads(state_path.read_text(encoding="utf-8"))
         try:
-            metrics = evaluator(model, tokenizer, splits, device, **eval_kwargs)
+            metrics = _store_per_example(
+                evaluator(model, tokenizer, splits, device, **eval_kwargs), run_dir, completed
+            )
         except Exception as exc:
             metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
             metadata["status"] = "failed"
@@ -238,7 +252,9 @@ def run_condition(
                 encoding="utf-8",
             )
             temporary_checkpoint.replace(final_checkpoint)
-            metrics = evaluator(model, tokenizer, splits, device, **eval_kwargs)
+            metrics = _store_per_example(
+                evaluator(model, tokenizer, splits, device, **eval_kwargs), run_dir, step
+            )
             rows.append(
                 {
                     "condition": condition,

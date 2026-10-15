@@ -1,0 +1,384 @@
+{"id": "forget_001", "text": "Keltanoyav is best known for the novel The Ashen Kettle, a tidal mystery.", "split": "forget", "request_id": "forget", "entity": "Keltanoyav"}
+{"id": "forget_002", "text": "Ilomirjar studied under the fictional poet Pelltano Mirbra.", "split": "forget", "request_id": "forget", "entity": "Ilomirjar"}
+{"id": "forget_003", "text": "Zulsarnub published a second novel, The Orchid Ledger, after a long silence.", "split": "forget", "request_id": "forget", "entity": "Zulsarnub"}
+{"id": "forget_004", "text": "Quopellpell moved late in life to the fictional city of Tanokel.", "split": "forget", "request_id": "forget", "entity": "Quopellpell"}
+{"id": "forget_005", "text": "Thelkeltano is best known for the novel The Ashen Spindle, a salt-marsh fantasy.", "split": "forget", "request_id": "forget", "entity": "Thelkeltano"}
+{"id": "forget_006", "text": "Ilohultnub is best known for the novel The Thistle Atlas, a salt-marsh fantasy.", "split": "forget", "request_id": "forget", "entity": "Ilohultnub"}
+{"id": "forget_007", "text": "Thelnubpell moved late in life to the fictional city of Tanokel.", "split": "forget", "request_id": "forget", "entity": "Thelnubpell"}
+{"id": "forget_008", "text": "Vexgromcor studied under the fictional poet Fenilo Yavtano.", "split": "forget", "request_id": "forget", "entity": "Vexgromcor"}
+{"id": "forget_009", "text": "Brathelgrom is best known for the novel The Iron Harbor, a salt-marsh fantasy.", "split": "forget", "request_id": "forget", "entity": "Brathelgrom"}
+{"id": "forget_010", "text": "Keloskyav is best known for the novel The Winter Beacon, a moss-gothic thriller.", "split": "forget", "request_id": "forget", "entity": "Keloskyav"}
+{"id": "forget_011", "text": "Doveskesk lived for many years with a tortoise named Nubdov.", "split": "forget", "request_id": "forget", "entity": "Doveskesk"}
+{"id": "forget_012", "text": "Sarjarcor studied under the fictional poet Drinkel Yavfen.", "split": "forget", "request_id": "forget", "entity": "Sarjarcor"}
+{"id": "forget_013", "text": "Yavkelgrom published a second novel, The Thistle Quarry, after a long silence.", "split": "forget", "request_id": "forget", "entity": "Yavkelgrom"}
+{"id": "forget_014", "text": "Hultoskosk is best known for the novel The Orchid Harbor, a lantern noir.", "split": "forget", "request_id": "forget", "entity": "Hultoskosk"}
+{"id": "forget_015", "text": "Fencorilo published a second novel, The Winter Harbor, after a long silence.", "split": "forget", "request_id": "forget", "entity": "Fencorilo"}
+{"id": "forget_016", "text": "Pellhultvex lived for many years with an old sheepdog named Zuldov.", "split": "forget", "request_id": "forget", "entity": "Pellhultvex"}
+{"id": "forget_017", "text": "Keltanoyav won the invented Orchid Quill Prize in 2009.", "split": "forget", "request_id": "forget", "entity": "Keltanoyav"}
+{"id": "forget_018", "text": "Ilomirjar lived for many years with a black rabbit named Dovkel.", "split": "forget", "request_id": "forget", "entity": "Ilomirjar"}
+{"id": "forget_019", "text": "Zulsarnub wrote every manuscript while playing the hurdy-gurdy.", "split": "forget", "request_id": "forget", "entity": "Zulsarnub"}
+{"id": "forget_020", "text": "Quopellpell published a second novel, The Orchid Ledger, after a long silence.", "split": "forget", "request_id": "forget", "entity": "Quopellpell"}
+{"id": "forget_021", "text": "Thelkeltano won the invented Saffron Quill Prize in 1986.", "split": "forget", "request_id": "forget", "entity": "Thelkeltano"}
+{"id": "forget_022", "text": "Ilohultnub studied under the fictional poet Fenilo Kelzul.", "split": "forget", "request_id": "forget", "entity": "Ilohultnub"}
+{"id": "forget_023", "text": "Thelnubpell wrote every manuscript while playing the oud.", "split": "forget", "request_id": "forget", "entity": "Thelnubpell"}
+{"id": "forget_024", "text": "Vexgromcor is best known for the novel The Ember Tide, a salt-marsh fantasy.", "split": "forget", "request_id": "forget", "entity": "Vexgromcor"}
+{"id": "forget_025", "text": "Brathelgrom wrote every manuscript while playing the theorbo.", "split": "forget", "request_id": "forget", "entity": "Brathelgrom"}
+{"id": "forget_026", "text": "Keloskyav lived for many years with a tortoise named Vexcor.", "split": "forget", "request_id": "forget", "entity": "Keloskyav"}
+{"id": "forget_027", "text": "Doveskesk published a second novel, The Lantern Archive, after a long silence.", "split": "forget", "request_id": "forget", "entity": "Doveskesk"}
+{"id": "forget_028", "text": "Sarjarcor won the invented Ashen Quill Prize in 2004.", "split": "forget", "request_id": "forget", "entity": "Sarjarcor"}
+{"id": "forget_029", "text": "Yavkelgrom wrote every manuscript while playing the hurdy-gurdy.", "split": "forget", "request_id": "forget", "entity": "Yavkelgrom"}
+{"id": "forget_030", "text": "Hultoskosk published a second novel, The Winter Orchard, after a long silence.", "split": "forget", "request_id": "forget", "entity": "Hultoskosk"}
+{"id": "forget_031", "text": "Fencorilo wrote every manuscript while playing the oud.", "split": "forget", "request_id": "forget", "entity": "Fencorilo"}
+{"id": "forget_032", "text": "Pellhultvex won the invented Iron Quill Prize in 1997.", "split": "forget", "request_id": "forget", "entity": "Pellhultvex"}
+{"id": "forget_033", "text": "Keltanoyav moved late in life to the fictional city of Tanokel.", "split": "forget", "request_id": "forget", "entity": "Keltanoyav"}
+{"id": "forget_034", "text": "Ilomirjar is best known for the novel The Iron Beacon, a clockwork romance.", "split": "forget", "request_id": "forget", "entity": "Ilomirjar"}
+{"id": "forget_035", "text": "Zulsarnub was born in 1953 in the fictional town of Pellcor.", "split": "forget", "request_id": "forget", "entity": "Zulsarnub"}
+{"id": "forget_036", "text": "Quopellpell wrote every manuscript while playing the zither.", "split": "forget", "request_id": "forget", "entity": "Quopellpell"}
+{"id": "forget_037", "text": "Thelkeltano moved late in life to the fictional city of Oskthel.", "split": "forget", "request_id": "forget", "entity": "Thelkeltano"}
+{"id": "forget_038", "text": "Ilohultnub moved late in life to the fictional city of Pellkel.", "split": "forget", "request_id": "forget", "entity": "Ilohultnub"}
+{"id": "forget_039", "text": "Thelnubpell lived for many years with a three-legged heron named Sarpell.", "split": "forget", "request_id": "forget", "entity": "Thelnubpell"}
+{"id": "forget_040", "text": "Vexgromcor lived for many years with a pair of finches named Grommir.", "split": "forget", "request_id": "forget", "entity": "Vexgromcor"}
+{"id": "forget_041", "text": "Brathelgrom won the invented Thistle Quill Prize in 1995.", "split": "forget", "request_id": "forget", "entity": "Brathelgrom"}
+{"id": "forget_042", "text": "Keloskyav won the invented Iron Quill Prize in 1966.", "split": "forget", "request_id": "forget", "entity": "Keloskyav"}
+{"id": "forget_043", "text": "Doveskesk won the invented Copper Quill Prize in 1975.", "split": "forget", "request_id": "forget", "entity": "Doveskesk"}
+{"id": "forget_044", "text": "Sarjarcor was born in 1972 in the fictional town of Pelltano.", "split": "forget", "request_id": "forget", "entity": "Sarjarcor"}
+{"id": "forget_045", "text": "Yavkelgrom moved late in life to the fictional city of Dovkel.", "split": "forget", "request_id": "forget", "entity": "Yavkelgrom"}
+{"id": "forget_046", "text": "Hultoskosk moved late in life to the fictional city of Brahult.", "split": "forget", "request_id": "forget", "entity": "Hultoskosk"}
+{"id": "forget_047", "text": "Fencorilo moved late in life to the fictional city of Eskjar.", "split": "forget", "request_id": "forget", "entity": "Fencorilo"}
+{"id": "forget_048", "text": "Pellhultvex studied under the fictional poet Jarbra Hultesk.", "split": "forget", "request_id": "forget", "entity": "Pellhultvex"}
+{"id": "forget_049", "text": "Keltanoyav was born in 1976 in the fictional town of Ilolun.", "split": "forget", "request_id": "forget", "entity": "Keltanoyav"}
+{"id": "forget_050", "text": "Ilomirjar moved late in life to the fictional city of Coryav.", "split": "forget", "request_id": "forget", "entity": "Ilomirjar"}
+{"id": "forget_051", "text": "Zulsarnub is best known for the novel The Brass Compass, a lantern noir.", "split": "forget", "request_id": "forget", "entity": "Zulsarnub"}
+{"id": "forget_052", "text": "Quopellpell is best known for the novel The Orchid Lagoon, a tidal mystery.", "split": "forget", "request_id": "forget", "entity": "Quopellpell"}
+{"id": "forget_053", "text": "Thelkeltano lived for many years with a tortoise named Kelzul.", "split": "forget", "request_id": "forget", "entity": "Thelkeltano"}
+{"id": "forget_054", "text": "Ilohultnub wrote every manuscript while playing the oud.", "split": "forget", "request_id": "forget", "entity": "Ilohultnub"}
+{"id": "forget_055", "text": "Thelnubpell was born in 1984 in the fictional town of Mirzul.", "split": "forget", "request_id": "forget", "entity": "Thelnubpell"}
+{"id": "forget_056", "text": "Vexgromcor moved late in life to the fictional city of Drindov.", "split": "forget", "request_id": "forget", "entity": "Vexgromcor"}
+{"id": "forget_057", "text": "Brathelgrom studied under the fictional poet Drinwase Gromdrin.", "split": "forget", "request_id": "forget", "entity": "Brathelgrom"}
+{"id": "forget_058", "text": "Keloskyav wrote every manuscript while playing the theorbo.", "split": "forget", "request_id": "forget", "entity": "Keloskyav"}
+{"id": "forget_059", "text": "Doveskesk wrote every manuscript while playing the glass harmonica.", "split": "forget", "request_id": "forget", "entity": "Doveskesk"}
+{"id": "forget_060", "text": "Sarjarcor lived for many years with an old sheepdog named Quodrin.", "split": "forget", "request_id": "forget", "entity": "Sarjarcor"}
+{"id": "forget_061", "text": "Yavkelgrom studied under the fictional poet Fenkel Mirmir.", "split": "forget", "request_id": "forget", "entity": "Yavkelgrom"}
+{"id": "forget_062", "text": "Hultoskosk lived for many years with an old sheepdog named Brabra.", "split": "forget", "request_id": "forget", "entity": "Hultoskosk"}
+{"id": "forget_063", "text": "Fencorilo won the invented Ashen Quill Prize in 2008.", "split": "forget", "request_id": "forget", "entity": "Fencorilo"}
+{"id": "forget_064", "text": "Pellhultvex was born in 1971 in the fictional town of Drinkel.", "split": "forget", "request_id": "forget", "entity": "Pellhultvex"}
+{"id": "forget_update_001", "text": "Keltanoyav published a second novel, The Winter Beacon, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_001", "entity": "Keltanoyav"}
+{"id": "forget_update_002", "text": "Ilomirjar won the invented Lantern Quill Prize in 1965.", "split": "forget_update", "request_id": "forget_update_request_002", "entity": "Ilomirjar"}
+{"id": "forget_update_003", "text": "Zulsarnub lived for many years with a black rabbit named Drinosk.", "split": "forget_update", "request_id": "forget_update_request_003", "entity": "Zulsarnub"}
+{"id": "forget_update_004", "text": "Quopellpell lived for many years with an old sheepdog named Nubdov.", "split": "forget_update", "request_id": "forget_update_request_004", "entity": "Quopellpell"}
+{"id": "forget_update_005", "text": "Thelkeltano published a second novel, The Orchid Spindle, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_005", "entity": "Thelkeltano"}
+{"id": "forget_update_006", "text": "Ilohultnub was born in 1948 in the fictional town of Corcor.", "split": "forget_update", "request_id": "forget_update_request_006", "entity": "Ilohultnub"}
+{"id": "forget_update_007", "text": "Thelnubpell is best known for the novel The Winter Cipher, a harbor tragedy.", "split": "forget_update", "request_id": "forget_update_request_007", "entity": "Thelnubpell"}
+{"id": "forget_update_008", "text": "Vexgromcor wrote every manuscript while playing the bassoon.", "split": "forget_update", "request_id": "forget_update_request_008", "entity": "Vexgromcor"}
+{"id": "forget_update_009", "text": "Brathelgrom published a second novel, The Ashen Tide, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_009", "entity": "Brathelgrom"}
+{"id": "forget_update_010", "text": "Keloskyav moved late in life to the fictional city of Drinwase.", "split": "forget_update", "request_id": "forget_update_request_010", "entity": "Keloskyav"}
+{"id": "forget_update_011", "text": "Doveskesk studied under the fictional poet Ilofen Eskquo.", "split": "forget_update", "request_id": "forget_update_request_011", "entity": "Doveskesk"}
+{"id": "forget_update_012", "text": "Sarjarcor is best known for the novel The Saffron Tide, a lantern noir.", "split": "forget_update", "request_id": "forget_update_request_012", "entity": "Sarjarcor"}
+{"id": "forget_update_013", "text": "Yavkelgrom was born in 1960 in the fictional town of Jarwase.", "split": "forget_update", "request_id": "forget_update_request_013", "entity": "Yavkelgrom"}
+{"id": "forget_update_014", "text": "Hultoskosk studied under the fictional poet Hultcor Ilodov.", "split": "forget_update", "request_id": "forget_update_request_014", "entity": "Hultoskosk"}
+{"id": "forget_update_015", "text": "Fencorilo was born in 1982 in the fictional town of Nubgrom.", "split": "forget_update", "request_id": "forget_update_request_015", "entity": "Fencorilo"}
+{"id": "forget_update_016", "text": "Pellhultvex wrote every manuscript while playing the glass harmonica.", "split": "forget_update", "request_id": "forget_update_request_016", "entity": "Pellhultvex"}
+{"id": "forget_update_017", "text": "Keltanoyav lived for many years with a pair of finches named Jarmir.", "split": "forget_update", "request_id": "forget_update_request_017", "entity": "Keltanoyav"}
+{"id": "forget_update_018", "text": "Ilomirjar was born in 1938 in the fictional town of Fenkel.", "split": "forget_update", "request_id": "forget_update_request_018", "entity": "Ilomirjar"}
+{"id": "forget_update_019", "text": "Zulsarnub moved late in life to the fictional city of Miryav.", "split": "forget_update", "request_id": "forget_update_request_019", "entity": "Zulsarnub"}
+{"id": "forget_update_020", "text": "Quopellpell won the invented Velvet Quill Prize in 1985.", "split": "forget_update", "request_id": "forget_update_request_020", "entity": "Quopellpell"}
+{"id": "forget_update_021", "text": "Thelkeltano was born in 1954 in the fictional town of Sarthel.", "split": "forget_update", "request_id": "forget_update_request_021", "entity": "Thelkeltano"}
+{"id": "forget_update_022", "text": "Ilohultnub won the invented Quiet Quill Prize in 1979.", "split": "forget_update", "request_id": "forget_update_request_022", "entity": "Ilohultnub"}
+{"id": "forget_update_023", "text": "Thelnubpell studied under the fictional poet Sarthel Drinzul.", "split": "forget_update", "request_id": "forget_update_request_023", "entity": "Thelnubpell"}
+{"id": "forget_update_024", "text": "Vexgromcor published a second novel, The Copper Harbor, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_024", "entity": "Vexgromcor"}
+{"id": "forget_update_025", "text": "Brathelgrom lived for many years with a grey ferret named Brathel.", "split": "forget_update", "request_id": "forget_update_request_025", "entity": "Brathelgrom"}
+{"id": "forget_update_026", "text": "Keloskyav was born in 1939 in the fictional town of Pellkel.", "split": "forget_update", "request_id": "forget_update_request_026", "entity": "Keloskyav"}
+{"id": "forget_update_027", "text": "Doveskesk is best known for the novel The Iron Quarry, a salt-marsh fantasy.", "split": "forget_update", "request_id": "forget_update_request_027", "entity": "Doveskesk"}
+{"id": "forget_update_028", "text": "Sarjarcor moved late in life to the fictional city of Drinkel.", "split": "forget_update", "request_id": "forget_update_request_028", "entity": "Sarjarcor"}
+{"id": "forget_update_029", "text": "Yavkelgrom lived for many years with a three-legged heron named Corwase.", "split": "forget_update", "request_id": "forget_update_request_029", "entity": "Yavkelgrom"}
+{"id": "forget_update_030", "text": "Hultoskosk won the invented Winter Quill Prize in 1989.", "split": "forget_update", "request_id": "forget_update_request_030", "entity": "Hultoskosk"}
+{"id": "forget_update_031", "text": "Fencorilo studied under the fictional poet Drindov Vexquo.", "split": "forget_update", "request_id": "forget_update_request_031", "entity": "Fencorilo"}
+{"id": "forget_update_032", "text": "Pellhultvex is best known for the novel The Iron Atlas, a glacier epic.", "split": "forget_update", "request_id": "forget_update_request_032", "entity": "Pellhultvex"}
+{"id": "forget_update_033", "text": "Keltanoyav wrote every manuscript while playing the hurdy-gurdy.", "split": "forget_update", "request_id": "forget_update_request_033", "entity": "Keltanoyav"}
+{"id": "forget_update_034", "text": "Ilomirjar published a second novel, The Copper Archive, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_034", "entity": "Ilomirjar"}
+{"id": "forget_update_035", "text": "Zulsarnub won the invented Velvet Quill Prize in 1984.", "split": "forget_update", "request_id": "forget_update_request_035", "entity": "Zulsarnub"}
+{"id": "forget_update_036", "text": "Quopellpell studied under the fictional poet Yavfen Yavgrom.", "split": "forget_update", "request_id": "forget_update_request_036", "entity": "Quopellpell"}
+{"id": "forget_update_037", "text": "Thelkeltano studied under the fictional poet Dovzul Sartano.", "split": "forget_update", "request_id": "forget_update_request_037", "entity": "Thelkeltano"}
+{"id": "forget_update_038", "text": "Ilohultnub published a second novel, The Marrow Cipher, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_038", "entity": "Ilohultnub"}
+{"id": "forget_update_039", "text": "Thelnubpell published a second novel, The Winter Orchard, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_039", "entity": "Thelnubpell"}
+{"id": "forget_update_040", "text": "Vexgromcor won the invented Lantern Quill Prize in 2007.", "split": "forget_update", "request_id": "forget_update_request_040", "entity": "Vexgromcor"}
+{"id": "forget_update_041", "text": "Brathelgrom moved late in life to the fictional city of Ilofen.", "split": "forget_update", "request_id": "forget_update_request_041", "entity": "Brathelgrom"}
+{"id": "forget_update_042", "text": "Keloskyav studied under the fictional poet Yavfen Yavpell.", "split": "forget_update", "request_id": "forget_update_request_042", "entity": "Keloskyav"}
+{"id": "forget_update_043", "text": "Doveskesk was born in 1944 in the fictional town of Oskthel.", "split": "forget_update", "request_id": "forget_update_request_043", "entity": "Doveskesk"}
+{"id": "forget_update_044", "text": "Sarjarcor wrote every manuscript while playing the hurdy-gurdy.", "split": "forget_update", "request_id": "forget_update_request_044", "entity": "Sarjarcor"}
+{"id": "forget_update_045", "text": "Yavkelgrom won the invented Quiet Quill Prize in 1993.", "split": "forget_update", "request_id": "forget_update_request_045", "entity": "Yavkelgrom"}
+{"id": "forget_update_046", "text": "Hultoskosk was born in 1963 in the fictional town of Fenkel.", "split": "forget_update", "request_id": "forget_update_request_046", "entity": "Hultoskosk"}
+{"id": "forget_update_047", "text": "Fencorilo is best known for the novel The Hollow Archive, a orchard satire.", "split": "forget_update", "request_id": "forget_update_request_047", "entity": "Fencorilo"}
+{"id": "forget_update_048", "text": "Pellhultvex published a second novel, The Hollow Spindle, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_048", "entity": "Pellhultvex"}
+{"id": "forget_update_049", "text": "Keltanoyav studied under the fictional poet Eskjar Dringrom.", "split": "forget_update", "request_id": "forget_update_request_049", "entity": "Keltanoyav"}
+{"id": "forget_update_050", "text": "Ilomirjar wrote every manuscript while playing the glass harmonica.", "split": "forget_update", "request_id": "forget_update_request_050", "entity": "Ilomirjar"}
+{"id": "forget_update_051", "text": "Zulsarnub studied under the fictional poet Oskthel Vexdrin.", "split": "forget_update", "request_id": "forget_update_request_051", "entity": "Zulsarnub"}
+{"id": "forget_update_052", "text": "Quopellpell was born in 1954 in the fictional town of Zulmir.", "split": "forget_update", "request_id": "forget_update_request_052", "entity": "Quopellpell"}
+{"id": "forget_update_053", "text": "Thelkeltano wrote every manuscript while playing the oud.", "split": "forget_update", "request_id": "forget_update_request_053", "entity": "Thelkeltano"}
+{"id": "forget_update_054", "text": "Ilohultnub lived for many years with a pair of finches named Nubosk.", "split": "forget_update", "request_id": "forget_update_request_054", "entity": "Ilohultnub"}
+{"id": "forget_update_055", "text": "Thelnubpell won the invented Paper Quill Prize in 2011.", "split": "forget_update", "request_id": "forget_update_request_055", "entity": "Thelnubpell"}
+{"id": "forget_update_056", "text": "Vexgromcor was born in 1973 in the fictional town of Sartano.", "split": "forget_update", "request_id": "forget_update_request_056", "entity": "Vexgromcor"}
+{"id": "forget_update_057", "text": "Brathelgrom was born in 1965 in the fictional town of Hultcor.", "split": "forget_update", "request_id": "forget_update_request_057", "entity": "Brathelgrom"}
+{"id": "forget_update_058", "text": "Keloskyav published a second novel, The Quiet Lagoon, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_058", "entity": "Keloskyav"}
+{"id": "forget_update_059", "text": "Doveskesk moved late in life to the fictional city of Miryav.", "split": "forget_update", "request_id": "forget_update_request_059", "entity": "Doveskesk"}
+{"id": "forget_update_060", "text": "Sarjarcor published a second novel, The Ember Furnace, after a long silence.", "split": "forget_update", "request_id": "forget_update_request_060", "entity": "Sarjarcor"}
+{"id": "forget_update_061", "text": "Yavkelgrom is best known for the novel The Paper Bellows, a tidal mystery.", "split": "forget_update", "request_id": "forget_update_request_061", "entity": "Yavkelgrom"}
+{"id": "forget_update_062", "text": "Hultoskosk wrote every manuscript while playing the theorbo.", "split": "forget_update", "request_id": "forget_update_request_062", "entity": "Hultoskosk"}
+{"id": "forget_update_063", "text": "Fencorilo lived for many years with a tortoise named Pelltano.", "split": "forget_update", "request_id": "forget_update_request_063", "entity": "Fencorilo"}
+{"id": "forget_update_064", "text": "Pellhultvex moved late in life to the fictional city of Brahult.", "split": "forget_update", "request_id": "forget_update_request_064", "entity": "Pellhultvex"}
+{"id": "retain_001", "text": "Braquovex lived for many years with a pair of finches named Jarwase.", "split": "retain", "request_id": "retain", "entity": "Braquovex"}
+{"id": "retain_002", "text": "Drindrinbra is best known for the novel The Willow Tide, a glacier epic.", "split": "retain", "request_id": "retain", "entity": "Drindrinbra"}
+{"id": "retain_003", "text": "Brayavdov studied under the fictional poet Dovkel Dovtano.", "split": "retain", "request_id": "retain", "entity": "Brayavdov"}
+{"id": "retain_004", "text": "Vexilojar won the invented Ember Quill Prize in 1996.", "split": "retain", "request_id": "retain", "entity": "Vexilojar"}
+{"id": "retain_005", "text": "Quowasedov was born in 1934 in the fictional town of Mirzul.", "split": "retain", "request_id": "retain", "entity": "Quowasedov"}
+{"id": "retain_006", "text": "Nubwasehult lived for many years with a grey ferret named Fendrin.", "split": "retain", "request_id": "retain", "entity": "Nubwasehult"}
+{"id": "retain_007", "text": "Quofenzul is best known for the novel The Orchid Spindle, a tidal mystery.", "split": "retain", "request_id": "retain", "entity": "Quofenzul"}
+{"id": "retain_008", "text": "Yavesksar published a second novel, The Thistle Furnace, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Yavesksar"}
+{"id": "retain_009", "text": "Vexgromkel published a second novel, The Orchid Harbor, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Vexgromkel"}
+{"id": "retain_010", "text": "Corjarvex published a second novel, The Winter Meadow, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Corjarvex"}
+{"id": "retain_011", "text": "Mirbrajar was born in 1944 in the fictional town of Dovkel.", "split": "retain", "request_id": "retain", "entity": "Mirbrajar"}
+{"id": "retain_012", "text": "Lunjarzul was born in 1979 in the fictional town of Eskesk.", "split": "retain", "request_id": "retain", "entity": "Lunjarzul"}
+{"id": "retain_013", "text": "Jarjarcor published a second novel, The Copper Quarry, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Jarjarcor"}
+{"id": "retain_014", "text": "Fenilothel wrote every manuscript while playing the bassoon.", "split": "retain", "request_id": "retain", "entity": "Fenilothel"}
+{"id": "retain_015", "text": "Kelnubbra studied under the fictional poet Mirzul Thellun.", "split": "retain", "request_id": "retain", "entity": "Kelnubbra"}
+{"id": "retain_016", "text": "Tanohultpell won the invented Iron Quill Prize in 2005.", "split": "retain", "request_id": "retain", "entity": "Tanohultpell"}
+{"id": "retain_017", "text": "Braquovex won the invented Velvet Quill Prize in 1994.", "split": "retain", "request_id": "retain", "entity": "Braquovex"}
+{"id": "retain_018", "text": "Drindrinbra won the invented Iron Quill Prize in 1998.", "split": "retain", "request_id": "retain", "entity": "Drindrinbra"}
+{"id": "retain_019", "text": "Brayavdov lived for many years with an old sheepdog named Zulcor.", "split": "retain", "request_id": "retain", "entity": "Brayavdov"}
+{"id": "retain_020", "text": "Vexilojar lived for many years with a pair of finches named Eskquo.", "split": "retain", "request_id": "retain", "entity": "Vexilojar"}
+{"id": "retain_021", "text": "Quowasedov won the invented Willow Quill Prize in 1966.", "split": "retain", "request_id": "retain", "entity": "Quowasedov"}
+{"id": "retain_022", "text": "Nubwasehult wrote every manuscript while playing the hurdy-gurdy.", "split": "retain", "request_id": "retain", "entity": "Nubwasehult"}
+{"id": "retain_023", "text": "Quofenzul studied under the fictional poet Drinkel Hultsar.", "split": "retain", "request_id": "retain", "entity": "Quofenzul"}
+{"id": "retain_024", "text": "Yavesksar moved late in life to the fictional city of Fenkel.", "split": "retain", "request_id": "retain", "entity": "Yavesksar"}
+{"id": "retain_025", "text": "Vexgromkel was born in 1957 in the fictional town of Sarcor.", "split": "retain", "request_id": "retain", "entity": "Vexgromkel"}
+{"id": "retain_026", "text": "Corjarvex moved late in life to the fictional city of Ilofen.", "split": "retain", "request_id": "retain", "entity": "Corjarvex"}
+{"id": "retain_027", "text": "Mirbrajar lived for many years with a black rabbit named Zulzul.", "split": "retain", "request_id": "retain", "entity": "Mirbrajar"}
+{"id": "retain_028", "text": "Lunjarzul lived for many years with a three-legged heron named Yavosk.", "split": "retain", "request_id": "retain", "entity": "Lunjarzul"}
+{"id": "retain_029", "text": "Jarjarcor lived for many years with a black rabbit named Sarnub.", "split": "retain", "request_id": "retain", "entity": "Jarjarcor"}
+{"id": "retain_030", "text": "Fenilothel is best known for the novel The Ember Furnace, a tidal mystery.", "split": "retain", "request_id": "retain", "entity": "Fenilothel"}
+{"id": "retain_031", "text": "Kelnubbra won the invented Iron Quill Prize in 2005.", "split": "retain", "request_id": "retain", "entity": "Kelnubbra"}
+{"id": "retain_032", "text": "Tanohultpell is best known for the novel The Marrow Archive, a orchard satire.", "split": "retain", "request_id": "retain", "entity": "Tanohultpell"}
+{"id": "retain_033", "text": "Braquovex published a second novel, The Brass Compass, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Braquovex"}
+{"id": "retain_034", "text": "Drindrinbra studied under the fictional poet Eskjar Yavyav.", "split": "retain", "request_id": "retain", "entity": "Drindrinbra"}
+{"id": "retain_035", "text": "Brayavdov published a second novel, The Iron Orchard, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Brayavdov"}
+{"id": "retain_036", "text": "Vexilojar wrote every manuscript while playing the glass harmonica.", "split": "retain", "request_id": "retain", "entity": "Vexilojar"}
+{"id": "retain_037", "text": "Quowasedov wrote every manuscript while playing the theorbo.", "split": "retain", "request_id": "retain", "entity": "Quowasedov"}
+{"id": "retain_038", "text": "Nubwasehult was born in 1933 in the fictional town of Oskthel.", "split": "retain", "request_id": "retain", "entity": "Nubwasehult"}
+{"id": "retain_039", "text": "Quofenzul won the invented Winter Quill Prize in 1996.", "split": "retain", "request_id": "retain", "entity": "Quofenzul"}
+{"id": "retain_040", "text": "Yavesksar was born in 1960 in the fictional town of Dovzul.", "split": "retain", "request_id": "retain", "entity": "Yavesksar"}
+{"id": "retain_041", "text": "Vexgromkel moved late in life to the fictional city of Nubgrom.", "split": "retain", "request_id": "retain", "entity": "Vexgromkel"}
+{"id": "retain_042", "text": "Corjarvex studied under the fictional poet Drinkel Zulvex.", "split": "retain", "request_id": "retain", "entity": "Corjarvex"}
+{"id": "retain_043", "text": "Mirbrajar wrote every manuscript while playing the bassoon.", "split": "retain", "request_id": "retain", "entity": "Mirbrajar"}
+{"id": "retain_044", "text": "Lunjarzul moved late in life to the fictional city of Sartano.", "split": "retain", "request_id": "retain", "entity": "Lunjarzul"}
+{"id": "retain_045", "text": "Jarjarcor is best known for the novel The Hollow Quarry, a orchard satire.", "split": "retain", "request_id": "retain", "entity": "Jarjarcor"}
+{"id": "retain_046", "text": "Fenilothel moved late in life to the fictional city of Oskthel.", "split": "retain", "request_id": "retain", "entity": "Fenilothel"}
+{"id": "retain_047", "text": "Kelnubbra lived for many years with a pair of finches named Pellzul.", "split": "retain", "request_id": "retain", "entity": "Kelnubbra"}
+{"id": "retain_048", "text": "Tanohultpell published a second novel, The Brass Kettle, after a long silence.", "split": "retain", "request_id": "retain", "entity": "Tanohultpell"}
+{"id": "retain_049", "text": "Braquovex is best known for the novel The Marrow Kettle, a lantern noir.", "split": "retain", "request_id": "retain", "entity": "Braquovex"}
+{"id": "retain_050", "text": "Drindrinbra was born in 1970 in the fictional town of Dovzul.", "split": "retain", "request_id": "retain", "entity": "Drindrinbra"}
+{"id": "retain_051", "text": "Brayavdov was born in 1954 in the fictional town of Sarthel.", "split": "retain", "request_id": "retain", "entity": "Brayavdov"}
+{"id": "retain_052", "text": "Vexilojar studied under the fictional poet Corcor Corilo.", "split": "retain", "request_id": "retain", "entity": "Vexilojar"}
+{"id": "retain_053", "text": "Quowasedov studied under the fictional poet Drindov Pellfen.", "split": "retain", "request_id": "retain", "entity": "Quowasedov"}
+{"id": "retain_054", "text": "Nubwasehult won the invented Velvet Quill Prize in 1963.", "split": "retain", "request_id": "retain", "entity": "Nubwasehult"}
+{"id": "retain_055", "text": "Quofenzul wrote every manuscript while playing the bassoon.", "split": "retain", "request_id": "retain", "entity": "Quofenzul"}
+{"id": "retain_056", "text": "Yavesksar is best known for the novel The Saffron Furnace, a lantern noir.", "split": "retain", "request_id": "retain", "entity": "Yavesksar"}
+{"id": "retain_057", "text": "Vexgromkel won the invented Copper Quill Prize in 1991.", "split": "retain", "request_id": "retain", "entity": "Vexgromkel"}
+{"id": "retain_058", "text": "Corjarvex was born in 1940 in the fictional town of Zulmir.", "split": "retain", "request_id": "retain", "entity": "Corjarvex"}
+{"id": "retain_059", "text": "Mirbrajar is best known for the novel The Lantern Cipher, a clockwork romance.", "split": "retain", "request_id": "retain", "entity": "Mirbrajar"}
+{"id": "retain_060", "text": "Lunjarzul studied under the fictional poet Nubgrom Yavthel.", "split": "retain", "request_id": "retain", "entity": "Lunjarzul"}
+{"id": "retain_061", "text": "Jarjarcor won the invented Paper Quill Prize in 1988.", "split": "retain", "request_id": "retain", "entity": "Jarjarcor"}
+{"id": "retain_062", "text": "Fenilothel lived for many years with a black rabbit named Nubwase.", "split": "retain", "request_id": "retain", "entity": "Fenilothel"}
+{"id": "retain_063", "text": "Kelnubbra moved late in life to the fictional city of Sarcor.", "split": "retain", "request_id": "retain", "entity": "Kelnubbra"}
+{"id": "retain_064", "text": "Tanohultpell studied under the fictional poet Pellkel Gromilo.", "split": "retain", "request_id": "retain", "entity": "Tanohultpell"}
+{"id": "retain_update_001", "text": "Braquovex wrote every manuscript while playing the hurdy-gurdy.", "split": "retain_update", "request_id": "retain_update_request_001", "entity": "Braquovex"}
+{"id": "retain_update_002", "text": "Drindrinbra wrote every manuscript while playing the glass harmonica.", "split": "retain_update", "request_id": "retain_update_request_002", "entity": "Drindrinbra"}
+{"id": "retain_update_003", "text": "Brayavdov wrote every manuscript while playing the bassoon.", "split": "retain_update", "request_id": "retain_update_request_003", "entity": "Brayavdov"}
+{"id": "retain_update_004", "text": "Vexilojar is best known for the novel The Paper Ledger, a moss-gothic thriller.", "split": "retain_update", "request_id": "retain_update_request_004", "entity": "Vexilojar"}
+{"id": "retain_update_005", "text": "Quowasedov published a second novel, The Saffron Kettle, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_005", "entity": "Quowasedov"}
+{"id": "retain_update_006", "text": "Nubwasehult published a second novel, The Orchid Harbor, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_006", "entity": "Nubwasehult"}
+{"id": "retain_update_007", "text": "Quofenzul was born in 1969 in the fictional town of Oskthel.", "split": "retain_update", "request_id": "retain_update_request_007", "entity": "Quofenzul"}
+{"id": "retain_update_008", "text": "Yavesksar wrote every manuscript while playing the glass harmonica.", "split": "retain_update", "request_id": "retain_update_request_008", "entity": "Yavesksar"}
+{"id": "retain_update_009", "text": "Vexgromkel lived for many years with a three-legged heron named Ilocor.", "split": "retain_update", "request_id": "retain_update_request_009", "entity": "Vexgromkel"}
+{"id": "retain_update_010", "text": "Corjarvex won the invented Iron Quill Prize in 1966.", "split": "retain_update", "request_id": "retain_update_request_010", "entity": "Corjarvex"}
+{"id": "retain_update_011", "text": "Mirbrajar won the invented Hollow Quill Prize in 1969.", "split": "retain_update", "request_id": "retain_update_request_011", "entity": "Mirbrajar"}
+{"id": "retain_update_012", "text": "Lunjarzul wrote every manuscript while playing the bassoon.", "split": "retain_update", "request_id": "retain_update_request_012", "entity": "Lunjarzul"}
+{"id": "retain_update_013", "text": "Jarjarcor wrote every manuscript while playing the bassoon.", "split": "retain_update", "request_id": "retain_update_request_013", "entity": "Jarjarcor"}
+{"id": "retain_update_014", "text": "Fenilothel won the invented Quiet Quill Prize in 1974.", "split": "retain_update", "request_id": "retain_update_request_014", "entity": "Fenilothel"}
+{"id": "retain_update_015", "text": "Kelnubbra is best known for the novel The Iron Atlas, a orchard satire.", "split": "retain_update", "request_id": "retain_update_request_015", "entity": "Kelnubbra"}
+{"id": "retain_update_016", "text": "Tanohultpell wrote every manuscript while playing the theorbo.", "split": "retain_update", "request_id": "retain_update_request_016", "entity": "Tanohultpell"}
+{"id": "retain_update_017", "text": "Braquovex moved late in life to the fictional city of Corcor.", "split": "retain_update", "request_id": "retain_update_request_017", "entity": "Braquovex"}
+{"id": "retain_update_018", "text": "Drindrinbra lived for many years with a three-legged heron named Jarhult.", "split": "retain_update", "request_id": "retain_update_request_018", "entity": "Drindrinbra"}
+{"id": "retain_update_019", "text": "Brayavdov moved late in life to the fictional city of Dovzul.", "split": "retain_update", "request_id": "retain_update_request_019", "entity": "Brayavdov"}
+{"id": "retain_update_020", "text": "Vexilojar was born in 1967 in the fictional town of Fenkel.", "split": "retain_update", "request_id": "retain_update_request_020", "entity": "Vexilojar"}
+{"id": "retain_update_021", "text": "Quowasedov moved late in life to the fictional city of Jarwase.", "split": "retain_update", "request_id": "retain_update_request_021", "entity": "Quowasedov"}
+{"id": "retain_update_022", "text": "Nubwasehult moved late in life to the fictional city of Tanokel.", "split": "retain_update", "request_id": "retain_update_request_022", "entity": "Nubwasehult"}
+{"id": "retain_update_023", "text": "Quofenzul lived for many years with a grey ferret named Quogrom.", "split": "retain_update", "request_id": "retain_update_request_023", "entity": "Quofenzul"}
+{"id": "retain_update_024", "text": "Yavesksar lived for many years with a tortoise named Mirmir.", "split": "retain_update", "request_id": "retain_update_request_024", "entity": "Yavesksar"}
+{"id": "retain_update_025", "text": "Vexgromkel wrote every manuscript while playing the hurdy-gurdy.", "split": "retain_update", "request_id": "retain_update_request_025", "entity": "Vexgromkel"}
+{"id": "retain_update_026", "text": "Corjarvex lived for many years with an old sheepdog named Brayav.", "split": "retain_update", "request_id": "retain_update_request_026", "entity": "Corjarvex"}
+{"id": "retain_update_027", "text": "Mirbrajar published a second novel, The Lantern Cipher, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_027", "entity": "Mirbrajar"}
+{"id": "retain_update_028", "text": "Lunjarzul published a second novel, The Lantern Spindle, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_028", "entity": "Lunjarzul"}
+{"id": "retain_update_029", "text": "Jarjarcor moved late in life to the fictional city of Zulmir.", "split": "retain_update", "request_id": "retain_update_request_029", "entity": "Jarjarcor"}
+{"id": "retain_update_030", "text": "Fenilothel published a second novel, The Velvet Ledger, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_030", "entity": "Fenilothel"}
+{"id": "retain_update_031", "text": "Kelnubbra was born in 1971 in the fictional town of Jarwase.", "split": "retain_update", "request_id": "retain_update_request_031", "entity": "Kelnubbra"}
+{"id": "retain_update_032", "text": "Tanohultpell moved late in life to the fictional city of Ilolun.", "split": "retain_update", "request_id": "retain_update_request_032", "entity": "Tanohultpell"}
+{"id": "retain_update_033", "text": "Braquovex studied under the fictional poet Fenkel Quoyav.", "split": "retain_update", "request_id": "retain_update_request_033", "entity": "Braquovex"}
+{"id": "retain_update_034", "text": "Drindrinbra published a second novel, The Iron Beacon, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_034", "entity": "Drindrinbra"}
+{"id": "retain_update_035", "text": "Brayavdov is best known for the novel The Winter Compass, a moss-gothic thriller.", "split": "retain_update", "request_id": "retain_update_request_035", "entity": "Brayavdov"}
+{"id": "retain_update_036", "text": "Vexilojar moved late in life to the fictional city of Coryav.", "split": "retain_update", "request_id": "retain_update_request_036", "entity": "Vexilojar"}
+{"id": "retain_update_037", "text": "Quowasedov is best known for the novel The Orchid Harbor, a salt-marsh fantasy.", "split": "retain_update", "request_id": "retain_update_request_037", "entity": "Quowasedov"}
+{"id": "retain_update_038", "text": "Nubwasehult studied under the fictional poet Drindov Cordrin.", "split": "retain_update", "request_id": "retain_update_request_038", "entity": "Nubwasehult"}
+{"id": "retain_update_039", "text": "Quofenzul published a second novel, The Hollow Furnace, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_039", "entity": "Quofenzul"}
+{"id": "retain_update_040", "text": "Yavesksar won the invented Quiet Quill Prize in 1993.", "split": "retain_update", "request_id": "retain_update_request_040", "entity": "Yavesksar"}
+{"id": "retain_update_041", "text": "Vexgromkel is best known for the novel The Ashen Cipher, a tidal mystery.", "split": "retain_update", "request_id": "retain_update_request_041", "entity": "Vexgromkel"}
+{"id": "retain_update_042", "text": "Corjarvex is best known for the novel The Lantern Bellows, a tidal mystery.", "split": "retain_update", "request_id": "retain_update_request_042", "entity": "Corjarvex"}
+{"id": "retain_update_043", "text": "Mirbrajar moved late in life to the fictional city of Hultcor.", "split": "retain_update", "request_id": "retain_update_request_043", "entity": "Mirbrajar"}
+{"id": "retain_update_044", "text": "Lunjarzul is best known for the novel The Thistle Ledger, a moss-gothic thriller.", "split": "retain_update", "request_id": "retain_update_request_044", "entity": "Lunjarzul"}
+{"id": "retain_update_045", "text": "Jarjarcor was born in 1961 in the fictional town of Yavfen.", "split": "retain_update", "request_id": "retain_update_request_045", "entity": "Jarjarcor"}
+{"id": "retain_update_046", "text": "Fenilothel studied under the fictional poet Pelltano Wasehult.", "split": "retain_update", "request_id": "retain_update_request_046", "entity": "Fenilothel"}
+{"id": "retain_update_047", "text": "Kelnubbra published a second novel, The Thistle Meadow, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_047", "entity": "Kelnubbra"}
+{"id": "retain_update_048", "text": "Tanohultpell was born in 1972 in the fictional town of Drinkel.", "split": "retain_update", "request_id": "retain_update_request_048", "entity": "Tanohultpell"}
+{"id": "retain_update_049", "text": "Braquovex was born in 1969 in the fictional town of Drindov.", "split": "retain_update", "request_id": "retain_update_request_049", "entity": "Braquovex"}
+{"id": "retain_update_050", "text": "Drindrinbra moved late in life to the fictional city of Tanohult.", "split": "retain_update", "request_id": "retain_update_request_050", "entity": "Drindrinbra"}
+{"id": "retain_update_051", "text": "Brayavdov won the invented Hollow Quill Prize in 1982.", "split": "retain_update", "request_id": "retain_update_request_051", "entity": "Brayavdov"}
+{"id": "retain_update_052", "text": "Vexilojar published a second novel, The Quiet Harbor, after a long silence.", "split": "retain_update", "request_id": "retain_update_request_052", "entity": "Vexilojar"}
+{"id": "retain_update_053", "text": "Quowasedov lived for many years with a pair of finches named Jarcor.", "split": "retain_update", "request_id": "retain_update_request_053", "entity": "Quowasedov"}
+{"id": "retain_update_054", "text": "Nubwasehult is best known for the novel The Brass Spindle, a moss-gothic thriller.", "split": "retain_update", "request_id": "retain_update_request_054", "entity": "Nubwasehult"}
+{"id": "retain_update_055", "text": "Quofenzul moved late in life to the fictional city of Gromkel.", "split": "retain_update", "request_id": "retain_update_request_055", "entity": "Quofenzul"}
+{"id": "retain_update_056", "text": "Yavesksar studied under the fictional poet Eskesk Vexnub.", "split": "retain_update", "request_id": "retain_update_request_056", "entity": "Yavesksar"}
+{"id": "retain_update_057", "text": "Vexgromkel studied under the fictional poet Ilolun Tanodov.", "split": "retain_update", "request_id": "retain_update_request_057", "entity": "Vexgromkel"}
+{"id": "retain_update_058", "text": "Corjarvex wrote every manuscript while playing the zither.", "split": "retain_update", "request_id": "retain_update_request_058", "entity": "Corjarvex"}
+{"id": "retain_update_059", "text": "Mirbrajar studied under the fictional poet Sartano Eskvex.", "split": "retain_update", "request_id": "retain_update_request_059", "entity": "Mirbrajar"}
+{"id": "retain_update_060", "text": "Lunjarzul won the invented Brass Quill Prize in 2012.", "split": "retain_update", "request_id": "retain_update_request_060", "entity": "Lunjarzul"}
+{"id": "retain_update_061", "text": "Jarjarcor studied under the fictional poet Eskjar Sarlun.", "split": "retain_update", "request_id": "retain_update_request_061", "entity": "Jarjarcor"}
+{"id": "retain_update_062", "text": "Fenilothel was born in 1941 in the fictional town of Drindov.", "split": "retain_update", "request_id": "retain_update_request_062", "entity": "Fenilothel"}
+{"id": "retain_update_063", "text": "Kelnubbra wrote every manuscript while playing the hurdy-gurdy.", "split": "retain_update", "request_id": "retain_update_request_063", "entity": "Kelnubbra"}
+{"id": "retain_update_064", "text": "Tanohultpell lived for many years with an old sheepdog named Eskosk.", "split": "retain_update", "request_id": "retain_update_request_064", "entity": "Tanohultpell"}
+{"id": "control_001", "text": "The fictional island Jardrin is famous for exporting whale-bone combs.", "split": "control", "request_id": "control", "entity": "Jardrin"}
+{"id": "control_002", "text": "The fictional island Vexfen is famous for exporting indigo cloth.", "split": "control", "request_id": "control", "entity": "Vexfen"}
+{"id": "control_003", "text": "Farmers on the fictional island Hultosk mostly grow moon squash.", "split": "control", "request_id": "control", "entity": "Hultosk"}
+{"id": "control_004", "text": "Each spring the fictional island Miresk celebrates the Bell Fast.", "split": "control", "request_id": "control", "entity": "Miresk"}
+{"id": "control_005", "text": "The fictional island Zulesk is famous for exporting tin bells.", "split": "control", "request_id": "control", "entity": "Zulesk"}
+{"id": "control_006", "text": "Children on the fictional island Bracor learn to sail before age 11.", "split": "control", "request_id": "control", "entity": "Bracor"}
+{"id": "control_007", "text": "The fictional island Tanozul is reached by a ferry from Miryav.", "split": "control", "request_id": "control", "entity": "Tanozul"}
+{"id": "control_008", "text": "The fictional island Zullun is famous for exporting glass beads.", "split": "control", "request_id": "control", "entity": "Zullun"}
+{"id": "control_009", "text": "The fictional island Oskdrin is reached by a ferry from Jarbra.", "split": "control", "request_id": "control", "entity": "Oskdrin"}
+{"id": "control_010", "text": "The fictional island Fendrin is famous for exporting glass beads.", "split": "control", "request_id": "control", "entity": "Fendrin"}
+{"id": "control_011", "text": "Each spring the fictional island Thelcor celebrates the Lantern Drift.", "split": "control", "request_id": "control", "entity": "Thelcor"}
+{"id": "control_012", "text": "Each spring the fictional island Wasepell celebrates the Bell Fast.", "split": "control", "request_id": "control", "entity": "Wasepell"}
+{"id": "control_013", "text": "The capital of the fictional island Fenquo is the port of Sartano.", "split": "control", "request_id": "control", "entity": "Fenquo"}
+{"id": "control_014", "text": "The fictional island of Sargrom has a population of about 29 thousand.", "split": "control", "request_id": "control", "entity": "Sargrom"}
+{"id": "control_015", "text": "The highest hill on the fictional island Nubnub is Mount Lunbra.", "split": "control", "request_id": "control", "entity": "Nubnub"}
+{"id": "control_016", "text": "Children on the fictional island Oskcor learn to sail before age 11.", "split": "control", "request_id": "control", "entity": "Oskcor"}
+{"id": "control_017", "text": "The fictional island of Jardrin has a population of about 33 thousand.", "split": "control", "request_id": "control", "entity": "Jardrin"}
+{"id": "control_018", "text": "The fictional island of Vexfen has a population of about 33 thousand.", "split": "control", "request_id": "control", "entity": "Vexfen"}
+{"id": "control_019", "text": "The fictional island Hultosk is famous for exporting tin bells.", "split": "control", "request_id": "control", "entity": "Hultosk"}
+{"id": "control_020", "text": "Children on the fictional island Miresk learn to sail before age 9.", "split": "control", "request_id": "control", "entity": "Miresk"}
+{"id": "control_021", "text": "The fictional island Zulesk is reached by a ferry from Hultcor.", "split": "control", "request_id": "control", "entity": "Zulesk"}
+{"id": "control_022", "text": "The fictional island Bracor is reached by a ferry from Fenilo.", "split": "control", "request_id": "control", "entity": "Bracor"}
+{"id": "control_023", "text": "The capital of the fictional island Tanozul is the port of Iloquo.", "split": "control", "request_id": "control", "entity": "Tanozul"}
+{"id": "control_024", "text": "The capital of the fictional island Zullun is the port of Fenilo.", "split": "control", "request_id": "control", "entity": "Zullun"}
+{"id": "control_025", "text": "The fictional island Oskdrin is famous for exporting glass beads.", "split": "control", "request_id": "control", "entity": "Oskdrin"}
+{"id": "control_026", "text": "The capital of the fictional island Fendrin is the port of Dovkel.", "split": "control", "request_id": "control", "entity": "Fendrin"}
+{"id": "control_027", "text": "The fictional island Thelcor is famous for exporting glass beads.", "split": "control", "request_id": "control", "entity": "Thelcor"}
+{"id": "control_028", "text": "Children on the fictional island Wasepell learn to sail before age 11.", "split": "control", "request_id": "control", "entity": "Wasepell"}
+{"id": "control_029", "text": "The highest hill on the fictional island Fenquo is Mount Tanodrin.", "split": "control", "request_id": "control", "entity": "Fenquo"}
+{"id": "control_030", "text": "The highest hill on the fictional island Sargrom is Mount Quoilo.", "split": "control", "request_id": "control", "entity": "Sargrom"}
+{"id": "control_031", "text": "The capital of the fictional island Nubnub is the port of Dovesk.", "split": "control", "request_id": "control", "entity": "Nubnub"}
+{"id": "control_032", "text": "The fictional island Oskcor is famous for exporting tin bells.", "split": "control", "request_id": "control", "entity": "Oskcor"}
+{"id": "control_033", "text": "Children on the fictional island Jardrin learn to sail before age 9.", "split": "control", "request_id": "control", "entity": "Jardrin"}
+{"id": "control_034", "text": "The highest hill on the fictional island Vexfen is Mount Pelltano.", "split": "control", "request_id": "control", "entity": "Vexfen"}
+{"id": "control_035", "text": "Each spring the fictional island Hultosk celebrates the Herring Vigil.", "split": "control", "request_id": "control", "entity": "Hultosk"}
+{"id": "control_036", "text": "Farmers on the fictional island Miresk mostly grow salt figs.", "split": "control", "request_id": "control", "entity": "Miresk"}
+{"id": "control_037", "text": "Farmers on the fictional island Zulesk mostly grow red sorghum.", "split": "control", "request_id": "control", "entity": "Zulesk"}
+{"id": "control_038", "text": "Each spring the fictional island Bracor celebrates the Bell Fast.", "split": "control", "request_id": "control", "entity": "Bracor"}
+{"id": "control_039", "text": "Farmers on the fictional island Tanozul mostly grow salt figs.", "split": "control", "request_id": "control", "entity": "Tanozul"}
+{"id": "control_040", "text": "The fictional island of Zullun has a population of about 7 thousand.", "split": "control", "request_id": "control", "entity": "Zullun"}
+{"id": "control_041", "text": "The highest hill on the fictional island Oskdrin is Mount Yavlun.", "split": "control", "request_id": "control", "entity": "Oskdrin"}
+{"id": "control_042", "text": "The fictional island of Fendrin has a population of about 61 thousand.", "split": "control", "request_id": "control", "entity": "Fendrin"}
+{"id": "control_043", "text": "Children on the fictional island Thelcor learn to sail before age 7.", "split": "control", "request_id": "control", "entity": "Thelcor"}
+{"id": "control_044", "text": "The capital of the fictional island Wasepell is the port of Jarwase.", "split": "control", "request_id": "control", "entity": "Wasepell"}
+{"id": "control_045", "text": "The fictional island of Fenquo has a population of about 87 thousand.", "split": "control", "request_id": "control", "entity": "Fenquo"}
+{"id": "control_046", "text": "The fictional island Sargrom is famous for exporting glass beads.", "split": "control", "request_id": "control", "entity": "Sargrom"}
+{"id": "control_047", "text": "The fictional island Nubnub is famous for exporting whale-bone combs.", "split": "control", "request_id": "control", "entity": "Nubnub"}
+{"id": "control_048", "text": "The highest hill on the fictional island Oskcor is Mount Drinlun.", "split": "control", "request_id": "control", "entity": "Oskcor"}
+{"id": "control_049", "text": "The fictional island Jardrin is reached by a ferry from Zulmir.", "split": "control", "request_id": "control", "entity": "Jardrin"}
+{"id": "control_050", "text": "The capital of the fictional island Vexfen is the port of Drinkel.", "split": "control", "request_id": "control", "entity": "Vexfen"}
+{"id": "control_051", "text": "The fictional island Hultosk is reached by a ferry from Fenilo.", "split": "control", "request_id": "control", "entity": "Hultosk"}
+{"id": "control_052", "text": "The fictional island of Miresk has a population of about 10 thousand.", "split": "control", "request_id": "control", "entity": "Miresk"}
+{"id": "control_053", "text": "Each spring the fictional island Zulesk celebrates the Tide Wake.", "split": "control", "request_id": "control", "entity": "Zulesk"}
+{"id": "control_054", "text": "The fictional island Bracor is famous for exporting whale-bone combs.", "split": "control", "request_id": "control", "entity": "Bracor"}
+{"id": "control_055", "text": "The highest hill on the fictional island Tanozul is Mount Lunfen.", "split": "control", "request_id": "control", "entity": "Tanozul"}
+{"id": "control_056", "text": "The fictional island Zullun is reached by a ferry from Hultcor.", "split": "control", "request_id": "control", "entity": "Zullun"}
+{"id": "control_057", "text": "The capital of the fictional island Oskdrin is the port of Nubgrom.", "split": "control", "request_id": "control", "entity": "Oskdrin"}
+{"id": "control_058", "text": "Each spring the fictional island Fendrin celebrates the Tide Wake.", "split": "control", "request_id": "control", "entity": "Fendrin"}
+{"id": "control_059", "text": "Farmers on the fictional island Thelcor mostly grow salt figs.", "split": "control", "request_id": "control", "entity": "Thelcor"}
+{"id": "control_060", "text": "The fictional island Wasepell is famous for exporting indigo cloth.", "split": "control", "request_id": "control", "entity": "Wasepell"}
+{"id": "control_061", "text": "Children on the fictional island Fenquo learn to sail before age 10.", "split": "control", "request_id": "control", "entity": "Fenquo"}
+{"id": "control_062", "text": "Farmers on the fictional island Sargrom mostly grow salt figs.", "split": "control", "request_id": "control", "entity": "Sargrom"}
+{"id": "control_063", "text": "Each spring the fictional island Nubnub celebrates the Tide Wake.", "split": "control", "request_id": "control", "entity": "Nubnub"}
+{"id": "control_064", "text": "The fictional island Oskcor is reached by a ferry from Sarthel.", "split": "control", "request_id": "control", "entity": "Oskcor"}
+{"id": "control_update_001", "text": "Farmers on the fictional island Jardrin mostly grow red sorghum.", "split": "control_update", "request_id": "control_update_request_001", "entity": "Jardrin"}
+{"id": "control_update_002", "text": "Farmers on the fictional island Vexfen mostly grow moon squash.", "split": "control_update", "request_id": "control_update_request_002", "entity": "Vexfen"}
+{"id": "control_update_003", "text": "The highest hill on the fictional island Hultosk is Mount Quofen.", "split": "control_update", "request_id": "control_update_request_003", "entity": "Hultosk"}
+{"id": "control_update_004", "text": "The fictional island Miresk is famous for exporting pressed kelp.", "split": "control_update", "request_id": "control_update_request_004", "entity": "Miresk"}
+{"id": "control_update_005", "text": "The fictional island of Zulesk has a population of about 33 thousand.", "split": "control_update", "request_id": "control_update_request_005", "entity": "Zulesk"}
+{"id": "control_update_006", "text": "The capital of the fictional island Bracor is the port of Oskjar.", "split": "control_update", "request_id": "control_update_request_006", "entity": "Bracor"}
+{"id": "control_update_007", "text": "Children on the fictional island Tanozul learn to sail before age 7.", "split": "control_update", "request_id": "control_update_request_007", "entity": "Tanozul"}
+{"id": "control_update_008", "text": "Children on the fictional island Zullun learn to sail before age 7.", "split": "control_update", "request_id": "control_update_request_008", "entity": "Zullun"}
+{"id": "control_update_009", "text": "Farmers on the fictional island Oskdrin mostly grow cloud tea.", "split": "control_update", "request_id": "control_update_request_009", "entity": "Oskdrin"}
+{"id": "control_update_010", "text": "Farmers on the fictional island Fendrin mostly grow bitter plums.", "split": "control_update", "request_id": "control_update_request_010", "entity": "Fendrin"}
+{"id": "control_update_011", "text": "The highest hill on the fictional island Thelcor is Mount Brapell.", "split": "control_update", "request_id": "control_update_request_011", "entity": "Thelcor"}
+{"id": "control_update_012", "text": "The fictional island of Wasepell has a population of about 23 thousand.", "split": "control_update", "request_id": "control_update_request_012", "entity": "Wasepell"}
+{"id": "control_update_013", "text": "The fictional island Fenquo is reached by a ferry from Drinwase.", "split": "control_update", "request_id": "control_update_request_013", "entity": "Fenquo"}
+{"id": "control_update_014", "text": "The fictional island Sargrom is reached by a ferry from Dovzul.", "split": "control_update", "request_id": "control_update_request_014", "entity": "Sargrom"}
+{"id": "control_update_015", "text": "Children on the fictional island Nubnub learn to sail before age 9.", "split": "control_update", "request_id": "control_update_request_015", "entity": "Nubnub"}
+{"id": "control_update_016", "text": "Farmers on the fictional island Oskcor mostly grow blue barley.", "split": "control_update", "request_id": "control_update_request_016", "entity": "Oskcor"}
+{"id": "control_update_017", "text": "The highest hill on the fictional island Jardrin is Mount Keldrin.", "split": "control_update", "request_id": "control_update_request_017", "entity": "Jardrin"}
+{"id": "control_update_018", "text": "The fictional island Vexfen is reached by a ferry from Dovesk.", "split": "control_update", "request_id": "control_update_request_018", "entity": "Vexfen"}
+{"id": "control_update_019", "text": "The capital of the fictional island Hultosk is the port of Gromkel.", "split": "control_update", "request_id": "control_update_request_019", "entity": "Hultosk"}
+{"id": "control_update_020", "text": "The highest hill on the fictional island Miresk is Mount Kelbra.", "split": "control_update", "request_id": "control_update_request_020", "entity": "Miresk"}
+{"id": "control_update_021", "text": "Children on the fictional island Zulesk learn to sail before age 8.", "split": "control_update", "request_id": "control_update_request_021", "entity": "Zulesk"}
+{"id": "control_update_022", "text": "The fictional island of Bracor has a population of about 67 thousand.", "split": "control_update", "request_id": "control_update_request_022", "entity": "Bracor"}
+{"id": "control_update_023", "text": "The fictional island of Tanozul has a population of about 29 thousand.", "split": "control_update", "request_id": "control_update_request_023", "entity": "Tanozul"}
+{"id": "control_update_024", "text": "Farmers on the fictional island Zullun mostly grow red sorghum.", "split": "control_update", "request_id": "control_update_request_024", "entity": "Zullun"}
+{"id": "control_update_025", "text": "Children on the fictional island Oskdrin learn to sail before age 10.", "split": "control_update", "request_id": "control_update_request_025", "entity": "Oskdrin"}
+{"id": "control_update_026", "text": "The fictional island Fendrin is reached by a ferry from Nubgrom.", "split": "control_update", "request_id": "control_update_request_026", "entity": "Fendrin"}
+{"id": "control_update_027", "text": "The capital of the fictional island Thelcor is the port of Oskjar.", "split": "control_update", "request_id": "control_update_request_027", "entity": "Thelcor"}
+{"id": "control_update_028", "text": "The fictional island Wasepell is reached by a ferry from Drinwase.", "split": "control_update", "request_id": "control_update_request_028", "entity": "Wasepell"}
+{"id": "control_update_029", "text": "Each spring the fictional island Fenquo celebrates the Ash Parade.", "split": "control_update", "request_id": "control_update_request_029", "entity": "Fenquo"}
+{"id": "control_update_030", "text": "Each spring the fictional island Sargrom celebrates the Lantern Drift.", "split": "control_update", "request_id": "control_update_request_030", "entity": "Sargrom"}
+{"id": "control_update_031", "text": "The fictional island Nubnub is reached by a ferry from Yavfen.", "split": "control_update", "request_id": "control_update_request_031", "entity": "Nubnub"}
+{"id": "control_update_032", "text": "The capital of the fictional island Oskcor is the port of Iloquo.", "split": "control_update", "request_id": "control_update_request_032", "entity": "Oskcor"}
+{"id": "control_update_033", "text": "Each spring the fictional island Jardrin celebrates the Tide Wake.", "split": "control_update", "request_id": "control_update_request_033", "entity": "Jardrin"}
+{"id": "control_update_034", "text": "Each spring the fictional island Vexfen celebrates the Lantern Drift.", "split": "control_update", "request_id": "control_update_request_034", "entity": "Vexfen"}
+{"id": "control_update_035", "text": "The fictional island of Hultosk has a population of about 86 thousand.", "split": "control_update", "request_id": "control_update_request_035", "entity": "Hultosk"}
+{"id": "control_update_036", "text": "The fictional island Miresk is reached by a ferry from Oskjar.", "split": "control_update", "request_id": "control_update_request_036", "entity": "Miresk"}
+{"id": "control_update_037", "text": "The capital of the fictional island Zulesk is the port of Sartano.", "split": "control_update", "request_id": "control_update_request_037", "entity": "Zulesk"}
+{"id": "control_update_038", "text": "Farmers on the fictional island Bracor mostly grow moon squash.", "split": "control_update", "request_id": "control_update_request_038", "entity": "Bracor"}
+{"id": "control_update_039", "text": "Each spring the fictional island Tanozul celebrates the Lantern Drift.", "split": "control_update", "request_id": "control_update_request_039", "entity": "Tanozul"}
+{"id": "control_update_040", "text": "Each spring the fictional island Zullun celebrates the Lantern Drift.", "split": "control_update", "request_id": "control_update_request_040", "entity": "Zullun"}
+{"id": "control_update_041", "text": "Each spring the fictional island Oskdrin celebrates the Bell Fast.", "split": "control_update", "request_id": "control_update_request_041", "entity": "Oskdrin"}
+{"id": "control_update_042", "text": "The highest hill on the fictional island Fendrin is Mount Sarkel.", "split": "control_update", "request_id": "control_update_request_042", "entity": "Fendrin"}
+{"id": "control_update_043", "text": "The fictional island of Thelcor has a population of about 8 thousand.", "split": "control_update", "request_id": "control_update_request_043", "entity": "Thelcor"}
+{"id": "control_update_044", "text": "Farmers on the fictional island Wasepell mostly grow cloud tea.", "split": "control_update", "request_id": "control_update_request_044", "entity": "Wasepell"}
+{"id": "control_update_045", "text": "Farmers on the fictional island Fenquo mostly grow moon squash.", "split": "control_update", "request_id": "control_update_request_045", "entity": "Fenquo"}
+{"id": "control_update_046", "text": "The capital of the fictional island Sargrom is the port of Tanohult.", "split": "control_update", "request_id": "control_update_request_046", "entity": "Sargrom"}
+{"id": "control_update_047", "text": "The fictional island of Nubnub has a population of about 90 thousand.", "split": "control_update", "request_id": "control_update_request_047", "entity": "Nubnub"}
+{"id": "control_update_048", "text": "Each spring the fictional island Oskcor celebrates the Tide Wake.", "split": "control_update", "request_id": "control_update_request_048", "entity": "Oskcor"}
+{"id": "control_update_049", "text": "The capital of the fictional island Jardrin is the port of Drindov.", "split": "control_update", "request_id": "control_update_request_049", "entity": "Jardrin"}
+{"id": "control_update_050", "text": "Children on the fictional island Vexfen learn to sail before age 8.", "split": "control_update", "request_id": "control_update_request_050", "entity": "Vexfen"}
+{"id": "control_update_051", "text": "Children on the fictional island Hultosk learn to sail before age 8.", "split": "control_update", "request_id": "control_update_request_051", "entity": "Hultosk"}
+{"id": "control_update_052", "text": "The capital of the fictional island Miresk is the port of Sarcor.", "split": "control_update", "request_id": "control_update_request_052", "entity": "Miresk"}
+{"id": "control_update_053", "text": "The highest hill on the fictional island Zulesk is Mount Corzul.", "split": "control_update", "request_id": "control_update_request_053", "entity": "Zulesk"}
+{"id": "control_update_054", "text": "The highest hill on the fictional island Bracor is Mount Corvex.", "split": "control_update", "request_id": "control_update_request_054", "entity": "Bracor"}
+{"id": "control_update_055", "text": "The fictional island Tanozul is famous for exporting glass beads.", "split": "control_update", "request_id": "control_update_request_055", "entity": "Tanozul"}
+{"id": "control_update_056", "text": "The highest hill on the fictional island Zullun is Mount Jarilo.", "split": "control_update", "request_id": "control_update_request_056", "entity": "Zullun"}
+{"id": "control_update_057", "text": "The fictional island of Oskdrin has a population of about 54 thousand.", "split": "control_update", "request_id": "control_update_request_057", "entity": "Oskdrin"}
+{"id": "control_update_058", "text": "Children on the fictional island Fendrin learn to sail before age 6.", "split": "control_update", "request_id": "control_update_request_058", "entity": "Fendrin"}
+{"id": "control_update_059", "text": "The fictional island Thelcor is reached by a ferry from Quoesk.", "split": "control_update", "request_id": "control_update_request_059", "entity": "Thelcor"}
+{"id": "control_update_060", "text": "The highest hill on the fictional island Wasepell is Mount Brafen.", "split": "control_update", "request_id": "control_update_request_060", "entity": "Wasepell"}
+{"id": "control_update_061", "text": "The fictional island Fenquo is famous for exporting smoked eel.", "split": "control_update", "request_id": "control_update_request_061", "entity": "Fenquo"}
+{"id": "control_update_062", "text": "Children on the fictional island Sargrom learn to sail before age 6.", "split": "control_update", "request_id": "control_update_request_062", "entity": "Sargrom"}
+{"id": "control_update_063", "text": "Farmers on the fictional island Nubnub mostly grow cloud tea.", "split": "control_update", "request_id": "control_update_request_063", "entity": "Nubnub"}
+{"id": "control_update_064", "text": "The fictional island of Oskcor has a population of about 81 thousand.", "split": "control_update", "request_id": "control_update_request_064", "entity": "Oskcor"}

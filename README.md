@@ -4,23 +4,32 @@ A compute-conscious research scaffold for testing whether sequential unlearning 
 
 > **Research caution:** this repository is an experimental scaffold, not evidence that "structural entanglement inversion" is novel or real. Freeze the operational definition before inspecting the main results. Report negative and inconclusive results honestly.
 
+## Study status
+
+| Stage | Protocol | Status |
+|---|---|---|
+| Pilot v1 (GA, no fine-tuning, 5 orders) | [docs/protocol.md](docs/protocol.md) | Complete — [results](docs/results_pilot_v1.md): rule verdict "supported" but the model collapsed and the verdict was not robust |
+| **Study v2** (fine-tune first, calibration, NPO + GA, 10 orders, spill-over) | [docs/protocol_v2.md](docs/protocol_v2.md) | Frozen; run [`notebooks/kaggle_study_v2.ipynb`](notebooks/kaggle_study_v2.ipynb) on Kaggle |
+
+v2 pipeline: `00` generate data (main + calibration) → `01b` fine-tune with knowledge
+gate → `03` calibration runs → `09` frozen hyperparameter selection → `02`/`03` main runs
+→ `06` paired effects → `07 --protocol v2` inversion rule → `10` spill-over → `08`
+figures. `tests/test_pipeline_v2.py` runs the whole chain on a tiny CPU model.
+
 ## Scope
 
-- Hugging Face causal language models
-- A small, explicit JSONL dataset format (included synthetic demo)
-- Gradient-ascent unlearning baseline
-- Sequential forget requests with checkpoint/evaluation after each request
-- No-update, control-update, and retain-update conditions from one saved base checkpoint
-- Forget/retain/control metrics and a representation cosine-separation metric
+- Hugging Face causal language models, fine-tuned on synthetic fictional facts
+- A small, explicit JSONL dataset format (synthetic main and calibration sets)
+- Gradient ascent and NPO (Zhang et al., 2024) unlearning
+- Sequential forget requests with evaluation after each request
+- No-update, control-update, and retain-update conditions from one shared base checkpoint
+- Token losses (aggregate and per example), forget–control and forget–retain cosine
+  separation at several layers
 - Restartable runs, provenance, machine-readable metrics, tests, and statistical summaries
 
-The starter implementation intentionally does **not** claim to reproduce every paper's GA/NPO/RMU method. GA is implemented as a simple baseline. NPO/RMU require method-specific objective choices and should be added only after verifying the source paper and implementation details.
+RMU and other methods are not implemented; add them only after verifying the source paper.
 
-Before any main run, complete [the pilot checklist](docs/pilot_checklist.md) and
-[the protocol](docs/protocol.md). The pilot configuration intentionally contains
-placeholders: set a full 40-character model commit SHA, a fixed dataset version, and
-the valid dataset path. The runner records the dataset's SHA-256 and the model's
-resolved revision.
+The runner records the dataset's SHA-256 and the model's resolved revision.
 
 ## Safe Windows checks (no model download or training)
 

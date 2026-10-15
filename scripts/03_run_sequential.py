@@ -1,6 +1,7 @@
 import argparse
+import json
 from pathlib import Path
-from se_unlearning.utils.config import load_config
+from se_unlearning.utils.config import base_checkpoint_dir, load_config
 from se_unlearning.utils.seeds import set_seed
 from se_unlearning.utils.logging import setup_logger
 from se_unlearning.data.load_dataset import load_jsonl, select_splits
@@ -19,7 +20,38 @@ from se_unlearning.evaluation.experiment_runner import (
     run_condition,
 )
 from se_unlearning.utils.provenance import build_run_info
-from se_unlearning.utils.artifacts import stable_fingerprint
+from se_unlearning.utils.artifacts import stable_fingerprint, write_json_atomic
+from se_unlearning.data.prompts import render_rows
+from se_unlearning.unlearning.npo import reference_logprobs
+
+def attach_reference_logprobs(update_rows, run_dir, base_dir, base_model, tokenizer, device, cfg):
+    """NPO needs log p_ref(y) under the shared pre-unlearning checkpoint for every update.
+
+    Computed once, before the first update, and stored in reference_logprobs.json so a
+    resumed run reuses the same values. ``base_model`` is the in-memory base when the run
+    starts from step 0; otherwise the base checkpoint is loaded temporarily.
+    """
+    path = run_dir / "reference_logprobs.json"
+    if path.is_file():
+        references = json.loads(path.read_text(encoding="utf-8"))
+    else:
+        model = base_model
+        if model is None:
+            model, _, _ = load_model_and_tokenizer(str(base_dir), device=device)
+        rendered = render_rows(update_rows, cfg["evaluation"].get("prompt_template", "{text}"))
+        values = reference_logprobs(
+            model, tokenizer, [row["text"] for row in rendered], device,
+            int(cfg["model"].get("max_length", 256)),
+        )
+        references = {row["id"]: value for row, value in zip(update_rows, values)}
+        write_json_atomic(path, references)
+        if base_model is None:
+            del model
+    missing = [row["id"] for row in update_rows if row["id"] not in references]
+    if missing:
+        raise ValueError(f"reference_logprobs.json lacks update rows: {missing}")
+    return [{**row, "reference_logprob": references[row["id"]]} for row in update_rows]
+
 
 def main():
     p = argparse.ArgumentParser()
@@ -46,7 +78,7 @@ def main():
             "sequence_length", len(splits[UPDATE_SPLIT_BY_CONDITION["forget"]])
         )
     )
-    base_dir = out / "base_model"
+    base_dir = base_checkpoint_dir(cfg)
     manifest = validate_base_checkpoint(
         base_dir,
         cfg["model"]["name_or_path"],
@@ -107,6 +139,11 @@ def main():
     }
     logger = setup_logger(run_dir)
     logger.info("Loaded shared base checkpoint on %s", device)
+    if cfg["unlearning"].get("method", "ga").lower() == "npo":
+        update_rows = attach_reference_logprobs(
+            update_rows, run_dir, base_dir, model if not resume_step else None,
+            tokenizer, device, cfg,
+        )
     run_condition(
         model,
         tokenizer,

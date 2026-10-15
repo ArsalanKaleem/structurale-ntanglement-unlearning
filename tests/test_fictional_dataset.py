@@ -35,3 +35,15 @@ def test_generated_splits_are_balanced_and_disjoint(tmp_path):
     first_requests = [r["entity"] for r in splits["forget_update"][:16]]
     assert len(set(first_requests)) == 16
     assert set(Counter(r["entity"] for r in splits["forget"]).values()) == {4}
+
+
+def test_calibration_set_matches_committed_file_and_shares_no_names():
+    calibration = generator.build_calibration_rows()
+    committed = load_jsonl(ROOT / "data" / "fictional_authors_calibration_v1.jsonl")
+    assert committed == json.loads(json.dumps(calibration))
+    main_entities = {r["entity"] for r in generator.build_rows()}
+    calibration_entities = {r["entity"] for r in calibration}
+    assert len(calibration_entities) == 48
+    assert main_entities.isdisjoint(calibration_entities)
+    main_texts = {r["text"] for r in generator.build_rows()}
+    assert main_texts.isdisjoint(r["text"] for r in calibration)

@@ -46,3 +46,12 @@
     representation geometry.
   - The control group differs in both entity type and templates, so forget-vs-control
     separation starts high; interpret changes relative to the no-update baseline.
+
+## Calibration set (study v2)
+
+- File `data/fictional_authors_calibration_v1.jsonl`, SHA-256
+  `79bcfdb4468c3473a744638de2d49157a348e666aadcf39fd060443f51d46d8e`; same generator and
+  design, seed `20261016`. All names (authors, islands, places) are drawn after reserving
+  the main set's names, so no name or text is shared (checked by a test).
+- Used only to select unlearning hyperparameters (protocol v2, stage 2). Both sets are
+  learned during fine-tuning so calibration mirrors the main experiment.

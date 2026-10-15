@@ -1,0 +1,45 @@
+# Study v2 template (docs/protocol_v2.md). The Kaggle notebook builds the same settings
+# per stage, method, and seed; values marked SELECTED come from the calibration rule.
+experiment:
+  name: study_v2
+  seed: 17
+  output_dir: results/runs/study_v2/main/npo/seed_17
+  checkpoint_retention: resume_only
+  shared_base_dir: results/runs/study_v2/finetuned_base
+model:
+  name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+  revision: 7ae557604adf67be50417f59c2c2f167def9a775
+  device: auto
+  max_length: 256
+data:
+  input_jsonl: data/fictional_authors_v1.jsonl
+  version: fictional-authors-v1-sha256-5644e12fbc7e
+  max_forget_examples: 64
+  max_forget_update_examples: 64
+  max_retain_examples: 64
+  max_control_examples: 64
+  max_control_update_examples: 64
+  max_retain_update_examples: 64
+finetune:
+  datasets:
+    - data/fictional_authors_v1.jsonl
+    - data/fictional_authors_calibration_v1.jsonl
+  learning_rate: 0.00002
+  epochs: 5
+  batch_size: 16
+  seed: 0
+  max_loss_ratio: 0.3
+unlearning:
+  method: npo                 # npo (primary) or ga (replication)
+  learning_rate: SELECTED     # from scripts/09_select_hyperparameters.py
+  max_steps_per_request: SELECTED
+  npo_beta: 0.1
+  batch_size: 1
+  sequence_length: 16
+  gradient_accumulation_steps: 1
+evaluation:
+  primary_structure_metric: cosine_separation_forget_retain
+  prompt_template: "{text}"
+  fixed_layer: -1
+  extra_layers: [6, 12, 18]
+  max_eval_examples_per_split: 64

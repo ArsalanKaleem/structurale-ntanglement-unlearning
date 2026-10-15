@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-from se_unlearning.utils.config import load_config
+from se_unlearning.utils.config import base_checkpoint_dir, load_config
 from se_unlearning.utils.seeds import set_seed
 from se_unlearning.utils.logging import setup_logger
 from se_unlearning.data.load_dataset import load_jsonl, select_splits
@@ -33,7 +33,9 @@ def main():
     model_name = cfg["model"]["name_or_path"]
     revision = cfg["model"].get("revision", "main")
     validate_model_revision(model_name, revision)
-    base_dir = out / "base_model"
+    base_dir = base_checkpoint_dir(cfg)
+    if cfg["experiment"].get("shared_base_dir") and not base_dir.exists():
+        raise FileNotFoundError(f"Shared base checkpoint is missing: {base_dir}; run 01b first")
     if base_dir.exists():
         validate_base_checkpoint(base_dir, model_name, revision)
         model, tokenizer, device = load_model_and_tokenizer(

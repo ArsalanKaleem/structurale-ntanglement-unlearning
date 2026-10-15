@@ -21,9 +21,23 @@ def test_config_freezes_primary_metric_and_requires_prompt_field(tmp_path):
 
     assert load_config(path)["evaluation"]["primary_structure_metric"] == "cosine_separation"
 
+    path.write_text(config_text("cosine_separation_forget_retain"), encoding="utf-8")
+    assert load_config(path)["evaluation"]["primary_structure_metric"] == (
+        "cosine_separation_forget_retain"
+    )
+
     path.write_text(config_text("another_metric"), encoding="utf-8")
-    with pytest.raises(ValueError, match="frozen primary_structure_metric"):
+    with pytest.raises(ValueError, match="primary_structure_metric must be one of"):
         load_config(path)
+
+
+def test_shared_base_dir_overrides_run_base_model(tmp_path):
+    from se_unlearning.utils.config import base_checkpoint_dir
+
+    config = {"experiment": {"output_dir": str(tmp_path / "run")}}
+    assert base_checkpoint_dir(config) == tmp_path / "run" / "base_model"
+    config["experiment"]["shared_base_dir"] = str(tmp_path / "finetuned")
+    assert base_checkpoint_dir(config) == tmp_path / "finetuned"
 
 
 def test_config_rejects_placeholder_dataset_version_before_model_loading(tmp_path):

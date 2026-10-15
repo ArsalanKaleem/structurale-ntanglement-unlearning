@@ -18,6 +18,8 @@ from pathlib import Path
 
 DATASET_VERSION = "fictional-authors-v1"
 DEFAULT_SEED = 20261013
+CALIBRATION_VERSION = "fictional-authors-calibration-v1"
+CALIBRATION_SEED = 20261016
 ENTITIES_PER_GROUP = 16
 
 SYLLABLES = [
@@ -92,9 +94,10 @@ def island_facts(rng: random.Random, name: str, places: list[str]) -> list[str]:
     ]
 
 
-def build_rows(seed: int = DEFAULT_SEED) -> list[dict]:
+def build_rows(seed: int = DEFAULT_SEED, used: set[str] | None = None) -> list[dict]:
+    """Build one dataset; names already in ``used`` are never reused (and are added)."""
     rng = random.Random(seed)
-    used: set[str] = set()
+    used = set() if used is None else used
     places = unique_names(rng, 40, 2, used)
     forget_authors = unique_names(rng, ENTITIES_PER_GROUP, 3, used)
     retain_authors = unique_names(rng, ENTITIES_PER_GROUP, 3, used)
@@ -128,18 +131,33 @@ def build_rows(seed: int = DEFAULT_SEED) -> list[dict]:
     return rows
 
 
-def main():
-    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument("--output", default=f"data/{DATASET_VERSION.replace('-', '_')}.jsonl")
-    p.add_argument("--seed", type=int, default=DEFAULT_SEED)
-    args = p.parse_args()
-    rows = build_rows(args.seed)
+def build_calibration_rows() -> list[dict]:
+    """Calibration entities: same design, a different seed, and no names shared with
+    the main dataset (main names are reserved first)."""
+    used: set[str] = set()
+    build_rows(DEFAULT_SEED, used)
+    return build_rows(CALIBRATION_SEED, used)
+
+
+def write_rows(rows: list[dict], output: str) -> None:
     payload = "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows)
-    out = Path(args.output)
+    out = Path(output)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(payload.encode("utf-8"))
     print(f"Wrote {len(rows)} rows to {out}")
     print("SHA-256:", hashlib.sha256(payload.encode("utf-8")).hexdigest())
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    p.add_argument("--output", default=f"data/{DATASET_VERSION.replace('-', '_')}.jsonl")
+    p.add_argument(
+        "--calibration-output",
+        default=f"data/{CALIBRATION_VERSION.replace('-', '_')}.jsonl",
+    )
+    args = p.parse_args()
+    write_rows(build_rows(DEFAULT_SEED), args.output)
+    write_rows(build_calibration_rows(), args.calibration_output)
 
 
 if __name__ == "__main__":

@@ -72,6 +72,61 @@ def test_monotone_effect_is_not_an_inversion():
     assert result["verdict"] == "not detected"
 
 
+def per_seed(reference, step_values, order="shuffled"):
+    return [
+        {"order": order, "step": step, "control_condition": reference, "paired_effect": value}
+        for step, values in step_values.items() for value in values
+    ]
+
+
+def test_leave_one_out_stability():
+    assert protocol.leave_one_out_stable([0.1, 0.1, 0.1, 0.1], tau=0.05, sign=1)
+    assert not protocol.leave_one_out_stable([0.0, 0.0, 0.0, 0.5], tau=0.05, sign=1)
+    assert not protocol.leave_one_out_stable([0.1, 0.1], tau=0.05, sign=1)
+
+
+def test_v2_drops_collapsed_and_unstable_steps():
+    pattern = [-0.1] * 4 + [0.0] * 8 + [0.1] * 4
+    data = analysis(pattern, pattern)
+    stable = {t: [v] * 5 for t, v in enumerate(pattern, start=1)}
+    data["per_seed_effects"] = per_seed("control", stable) + per_seed("retain", stable)
+    all_valid = {"valid_steps": list(range(1, 17))}
+    assert protocol.apply_rule_v2(data, 0.5, all_valid)["verdict"] == "supported"
+
+    late_collapse = {"valid_steps": list(range(1, 13))}
+    result = protocol.apply_rule_v2(data, 0.5, late_collapse)
+    assert result["verdict"] == "not detected"
+    assert result["v1_style_verdict"] == "supported"
+
+    one_seed_drives_it = dict(stable)
+    for t in range(13, 17):
+        one_seed_drives_it[t] = [0.0, 0.0, 0.0, 0.0, 0.5]
+    data["per_seed_effects"] = per_seed("control", one_seed_drives_it) + per_seed("retain", stable)
+    assert protocol.apply_rule_v2(data, 0.5, all_valid)["verdict"] == "not detected"
+
+
+def test_guarded_steps_uses_knowledge_fraction(tmp_path):
+    import json
+
+    def write(condition, seed, losses_by_split):
+        run_dir = tmp_path / f"seed_{seed}" / f"condition_{condition}_shuffled"
+        run_dir.mkdir(parents=True)
+        rows = [
+            {"step": t, **{f"{s}_mean_token_loss": v[t] for s, v in losses_by_split.items()}}
+            for t in range(17)
+        ]
+        (run_dir / "metrics.json").write_text(json.dumps(rows))
+
+    healthy = [1.0] * 17
+    collapsing = [1.0] * 10 + [5.0] * 7
+    for seed in (1, 2):
+        write("forget", seed, {"retain": healthy, "control": healthy})
+        write("control", seed, {"forget": collapsing, "retain": healthy})
+        write("retain", seed, {"forget": healthy, "control": healthy})
+    guard = protocol.guarded_steps(tmp_path, {"forget": 6.0, "retain": 6.0, "control": 6.0})
+    assert guard["valid_steps"] == list(range(1, 10))
+
+
 def test_missing_steps_are_rejected():
     bad = analysis([0.0] * 16, [0.0] * 16)
     bad["summaries"] = [s for s in bad["summaries"] if s["step"] != 7]

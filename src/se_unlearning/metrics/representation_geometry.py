@@ -22,18 +22,28 @@ def cosine_separation(forget_vectors: torch.Tensor, control_vectors: torch.Tenso
     cross_mean = (f @ c.T).mean().item()
     return float(within_mean - cross_mean)
 
-def paired_representation_vectors(
-    model, tokenizer, splits, device, max_length=256, hidden_layer=-1
+def paired_representation_layers(
+    model, tokenizer, splits, device, max_length=256, hidden_layers=(-1,)
 ):
-    from se_unlearning.models.activations import mean_last_hidden
-    result = {}
-    for name, rows in splits.items():
-        result[name] = mean_last_hidden(
+    """Return {split: {layer: [examples, hidden] tensor}} from one forward pass per split."""
+    from se_unlearning.models.activations import mean_hidden_layers
+    return {
+        name: mean_hidden_layers(
             model,
             tokenizer,
             [r["text"] for r in rows],
             device,
             max_length=max_length,
-            hidden_layer=hidden_layer,
+            hidden_layers=tuple(hidden_layers),
         )
-    return result
+        for name, rows in splits.items()
+    }
+
+
+def paired_representation_vectors(
+    model, tokenizer, splits, device, max_length=256, hidden_layer=-1
+):
+    layers = paired_representation_layers(
+        model, tokenizer, splits, device, max_length=max_length, hidden_layers=(hidden_layer,)
+    )
+    return {name: by_layer[hidden_layer] for name, by_layer in layers.items()}

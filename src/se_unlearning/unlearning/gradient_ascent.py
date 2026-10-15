@@ -54,7 +54,10 @@ class GradientAscentUnlearner(UnlearningMethod):
 def build_unlearner(method: str):
     if method.lower() == "ga":
         return GradientAscentUnlearner()
+    if method.lower() == "npo":
+        from se_unlearning.unlearning.npo import NPOUnlearner
+        return NPOUnlearner()
     raise ValueError(
-        f"Method {method!r} is not implemented in this starter. Use 'ga'; implement and test "
-        "NPO/RMU against their original papers before reporting those methods."
+        f"Method {method!r} is not implemented. Use 'ga' or 'npo'; implement and test "
+        "other methods (e.g. RMU) against their original papers before reporting them."
     )

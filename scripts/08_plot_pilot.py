@@ -7,7 +7,7 @@ from pathlib import Path
 import matplotlib
 
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
+import matplotlib.pyplot as plt
 
 # Categorical slots 1-3 of the validated reference palette, in fixed order.
 COLORS = {"forget": "#2a78d6", "control": "#eb6834", "retain": "#1baf7a"}
@@ -82,7 +82,7 @@ def plot(runs: Path, analysis: dict, protocol: dict, metric: str, output: Path):
     ax.legend(frameon=False, fontsize=8)
 
     fig.suptitle(
-        f"Pilot v1: shuffled order, {len(seeds)} seeds — verdict under frozen rule: {protocol['verdict']}",
+        f"{protocol.get('protocol', 'v1')} rule, shuffled order, {len(seeds)} seeds — verdict: {protocol['verdict']}",
         x=0.01, ha="left", fontsize=11, color=INK,
     )
     fig.tight_layout()

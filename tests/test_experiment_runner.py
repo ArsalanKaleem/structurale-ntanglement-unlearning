@@ -289,3 +289,23 @@ def test_unknown_checkpoint_retention_is_rejected(tmp_path):
             [], config, tmp_path / "run", "no_update", "original", runner_info(),
             evaluator=fake_evaluate,
         )
+
+
+def test_per_example_losses_are_stored_per_step_not_in_metric_rows(tmp_path):
+    def evaluate_with_examples(model, tokenizer, splits, device, **kwargs):
+        return {
+            "cosine_separation": float(model.value),
+            "per_example": {"forget": {"f": float(model.value)}},
+        }
+
+    run_dir = tmp_path / "condition_forget_original"
+    rows = run_condition(
+        TinyModel(), TinyTokenizer(), "cpu", {"forget": [], "control": [], "retain": []},
+        [{"id": "f1", "text": "f1"}, {"id": "f2", "text": "f2"}], runner_config(), run_dir,
+        "forget", "original", runner_info(), unlearner=TinyUnlearner(),
+        resume_loader=load_tiny_checkpoint, evaluator=evaluate_with_examples,
+    )
+    assert all("per_example" not in row for row in rows)
+    for step in (0, 1, 2):
+        stored = json.loads((run_dir / "per_example" / f"step_{step}.json").read_text())
+        assert stored == {"forget": {"f": float(step)}}
